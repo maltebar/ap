@@ -4,6 +4,9 @@ gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'autoprefixer-rails'
+gem 'ahoy_matey'
+gem 'ckeditor'
+gem 'paperclip'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
