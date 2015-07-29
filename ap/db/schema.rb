@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728182634) do
+ActiveRecord::Schema.define(version: 20150729142326) do
 
   create_table "board_posts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 20150728182634) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "issues", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,6 +62,13 @@ ActiveRecord::Schema.define(version: 20150728182634) do
   create_table "projects", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "titles", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "group_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
