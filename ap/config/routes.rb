@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :users
   resources :tweets
   resources :groups
   resources :partnerships
@@ -10,7 +12,8 @@ Rails.application.routes.draw do
   resources :issues
   resources :code_cases
   resources :design_cases
-  devise_for :users
+
+  root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -25,14 +25,15 @@ class TweetsController < ApplicationController
   # POST /tweets.json
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
-        format.json { render :show, status: :created, location: @tweet }
+        format.html { redirect_to tweets_path }
+        format.js
       else
+        flash[:notice] = "Message Failed"
         format.html { render :new }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,8 +43,8 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tweet }
+        format.html { redirect_to tweets_path}
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
@@ -69,6 +70,6 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:message)
+      params.require(:tweet).permit(:message, :user_id)
     end
 end
