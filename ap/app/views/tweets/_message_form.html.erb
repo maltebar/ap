@@ -1,0 +1,5 @@
+<%= form_for(Tweet.new) do |f| %>
+  <%= label :message, "What are you doing?" %><br />
+  <%= f.text_area :message %><br /> 
+  <%= f.submit 'Save' %>
+<% end %>

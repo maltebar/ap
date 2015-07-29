@@ -36,6 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    activeuuid (0.6.0)
+      activerecord (>= 3.1)
+      uuidtools
     addressable (2.3.8)
     ahoy_matey (1.2.0)
       addressable
@@ -192,6 +195,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeuuid (>= 0.5.0)
   ahoy_matey
   autoprefixer-rails
   bootstrap-sass (~> 3.3.3)

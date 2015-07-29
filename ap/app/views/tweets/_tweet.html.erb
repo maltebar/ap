@@ -1,0 +1,4 @@
+<% @tweets.each do |tweet|%>
+	<p><%= tweet.message %></p>
+	<p>Posted <%= time_ago_in_words(tweet.created_at) %> ago</p>
+<%end%>
