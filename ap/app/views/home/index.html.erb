@@ -1,1 +1,26 @@
-HELLO WORLD
+<h1>Home</h1>
+
+<br><br><br>
+
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+    <tr>
+      <th>Things You Should Know</th>
+      <th>Social Feed</th> 
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td></td>
+      <td>
+          <div id="tweets">
+            <%= render 'tweets/tweet' %>
+          </div>
+          
+      </td>
+    </tr>
+  </tbody>
+
+</table>

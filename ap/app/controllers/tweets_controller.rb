@@ -29,7 +29,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to tweets_path }
+        format.html { redirect_to home_path }
         format.js
       else
         flash[:notice] = "Message Failed"
@@ -43,7 +43,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to tweets_path}
+        format.html { redirect_to home_path}
         format.js
       else
         format.html { render :edit }
