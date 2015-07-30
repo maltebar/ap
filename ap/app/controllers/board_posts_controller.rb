@@ -4,7 +4,7 @@ class BoardPostsController < ApplicationController
   # GET /board_posts
   # GET /board_posts.json
   def index
-    @board_posts = BoardPost.all
+    @board_posts = BoardPost.all.order('updated_at DESC')
   end
 
   # GET /board_posts/1
@@ -28,7 +28,7 @@ class BoardPostsController < ApplicationController
 
     respond_to do |format|
       if @board_post.save
-        format.html { redirect_to @board_post, notice: 'Board post was successfully created.' }
+        format.html { redirect_to board_posts_path}
         format.json { render :show, status: :created, location: @board_post }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class BoardPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_post_params
-      params[:board_post]
+      params.require(:board_post).permit(:content, :user_id)
     end
 end

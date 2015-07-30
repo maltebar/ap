@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   resources :groups
   resources :partnerships
   resources :projects
-  resources :comments
-  resources :board_posts
+  resources :comments do
+    resources :board_posts
+  end
+  resources :board_posts do
+    resources :comments
+  end
   resources :code_solutions
   resources :design_solutions
   resources :issues
@@ -14,6 +18,8 @@ Rails.application.routes.draw do
   resources :design_cases
 
   root to: "home#index"
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,20 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Board Posts</h1>
-
-<table>
+<h1>Sounding Board</h1>
+<div align="right"><button class="btn btn-default"><%= link_to 'Add New Board Post', new_board_post_path %></button></div>
+<br>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Description</th>
+      <th>Tags</th>
+      <th>Author</th>
     </tr>
   </thead>
 
   <tbody>
     <% @board_posts.each do |board_post| %>
       <tr>
-        <td><%= link_to 'Show', board_post %></td>
-        <td><%= link_to 'Edit', edit_board_post_path(board_post) %></td>
-        <td><%= link_to 'Destroy', board_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=board_post.content%><br><br><%= link_to 'Comment', board_post %></td>
+        <td>Tags???</td>
+        <td><%=board_post.user.name%></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Board post', new_board_post_path %>
+
