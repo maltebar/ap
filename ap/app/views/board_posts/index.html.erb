@@ -13,7 +13,7 @@
   <tbody>
     <% @board_posts.each do |board_post| %>
       <tr>
-        <td><%=board_post.content%><br><br><%= link_to 'Comment', board_post %></td>
+        <td><%=board_post.content.html_safe%><br><br><%= link_to 'Comment', board_post %></td>
         <td>Tags???</td>
         <td><%=board_post.user.name%></td>
       </tr>
