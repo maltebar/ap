@@ -2,7 +2,8 @@
 <br>
 <table class="table table-bordered">
 	<tr>
-		<td><%=@board_post.content%></td>
+		<td><%=@board_post.content.html_safe%>
+		</td>
 		<td align="right"><%=@board_post.user.name%></td>
 	</tr>
 </table>
@@ -10,7 +11,7 @@
 	<%@comments = @board_post.comments.order('created_at ASC')%>
 	<%@comments.each do |c|%>
 		<tr>
-			<td><%=c.content%></td>
+			<td><%=c.content.html_safe%></td>
 			<td align="right"><%=c.user.name%><br>Upvotes:<%=c.upvotes%></td>
 		</tr>
 	<%end%>
@@ -18,7 +19,7 @@
 
 <%=form_for(Comment.new) do |f|%>
 	<%=f.label :content, 'Add a Comment'%><br>
-	<%=f.text_area :content%><br>
+	<%=f.cktext_area :content, :ckeditor => {:language => 'en'}%><br>
 	<%=f.hidden_field :user_id, value: current_user.id%>
 	<%=f.hidden_field :board_post_id, value: @board_post.id%>
 	<%=f.submit%>

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require ahoy
+//= require ckeditor/init
 //= require turbolinks
 //= require_tree .
 
