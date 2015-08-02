@@ -1,22 +1,26 @@
 <h1>My Partner Page</h1>
 
 <% url = "https://github.com/maltebar/ap/commits/master.atom" 
-	feed = Feedjira::Feed.fetch_and_parse url %>
+feed = Feedjira::Feed.fetch_and_parse url %>
+
+<div><div style="float: left; width: 50%">
 	<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th>Commit Message</th>
-			<th>By</th>
-			<th>Link</th>
-		</tr>
-	</thead>
-	<tbody>
-	<% feed.entries.each do |entry|%>
-	<tr>
-	<td><%= entry.title %></td>
-	<td><%= entry.author %></td>
-	<td><a href= <%=entry.url%> target="blank" >Go to this commit</a></td>
-	</tr>
-	<% end %>
-	 </tbody>
-</table>
+		<h3>GitHub Feed</h3>
+		<thead>
+			<tr>
+				<th>Commit Message</th>
+				<th>By</th>
+				<th>Link</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% feed.entries.each do |entry|%>
+			<tr>
+				<td><%= entry.title %></td>
+				<td><%= entry.author %>  <%= time_ago_in_words (entry.published) %> ago</td>
+				<td><a href= <%=entry.url%> target="blank" >Go to this commit</a></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
