@@ -8,6 +8,7 @@ gem 'ahoy_matey'
 gem 'activeuuid', '>= 0.5.0'
 gem 'ckeditor'
 gem 'paperclip'
+gem 'feedjira'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
