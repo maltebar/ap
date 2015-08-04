@@ -13,7 +13,10 @@
     <tr>
       <td></td>
       <td>
-          <div id="tweets">
+          <div id="tweet_form">
+            <%=render 'tweets/message_form'%>
+          </div>
+          <div id="tweets_box">
             <%= render 'tweets/tweet' %>
           </div>
           
@@ -22,3 +25,18 @@
   </tbody>
 
 </table>
+
+<script>
+function executeQuery() {
+  $.ajax({
+    success: function(data) {
+      $('#tweets_box').load('home/index #tweets_box')
+    }
+  });
+  setTimeout(executeQuery, 60000);
+}
+
+$(document).ready(function() {
+  setTimeout(executeQuery, 60000);
+});
+</script>
