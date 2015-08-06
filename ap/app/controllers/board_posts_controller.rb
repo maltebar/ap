@@ -69,6 +69,6 @@ class BoardPostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_post_params
-      params.require(:board_post).permit(:content, :user_id)
+      params.require(:board_post).permit(:content, :user_id, :title)
     end
 end
