@@ -2,17 +2,29 @@
 <br>
 <table class="table table-bordered">
 	<tr>
-		<td><%=@board_post.content.html_safe%>
+		<td width="80%"><%=@board_post.content.html_safe%>
 		</td>
-		<td align="right"><%=@board_post.user.name%></td>
+		<td width="20%"align="right">Author:<%=@board_post.user.name%></td>
 	</tr>
 </table>
 <table class="table table-bordered">
 	<%@comments = @board_post.comments.order('created_at ASC')%>
 	<%@comments.each do |c|%>
 		<tr>
-			<td><%=c.content.html_safe%></td>
-			<td align="right"><%=c.user.name%><br>Upvotes:<%=c.upvotes%></td>
+			<td width="80%"><%=c.content.html_safe%>
+				<div id="likes" align="right">
+					<%if CommentUpvote.where(comment_id: c.id, user_id: current_user.id).exists?%>
+						<div> You have already liked this comment.</div>
+					<%else%>
+						<%=form_for([CommentUpvote.new], remote: true) do |g|%>
+							<%=g.hidden_field :user_id, value: current_user.id%>
+							<%=g.hidden_field :comment_id, value: c.id%>
+							<%=g.submit "Like"%>
+						<%end%>
+					<%end%>
+				</div>
+			</td>
+			<td width="20%" align="right">Author:<%=c.user.name%><br>Upvotes:<%=c.upvotes%></td>
 		</tr>
 	<%end%>
 </table>
@@ -25,3 +37,12 @@
 	<%=f.submit%>
 <%end%>
 <%= link_to 'Back', board_posts_path %>
+
+
+<script>
+	$("#new_comment_upvote").bind("ajax:complete", function(event, xhr, status) {
+		window.location.reload();
+	});
+
+</script>
+
