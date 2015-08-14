@@ -41,6 +41,9 @@
 							<li><a class="topbar-link" href="<%= board_posts_path%>"><%= 'Sounding Board' %></a></li>
 							<li><a class="topbar-link" href=""><%= 'Resources' %></a></li>
 							<li><a class="topbar-link" href=""><%= 'Project Archive' %></a></li>
+							<%if !current_user.nil? and current_user.admin?%>
+								<li><a class="topbar-link" href="<%= users_path%>"><%= 'Admin Page' %></a></li>
+							<%end%>
 
 							<br><br><br>
 						</ul>

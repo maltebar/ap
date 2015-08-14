@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'users/userlist' => 'users#userlist'
+  
   resources :comment_upvotes
   resources :notifications
   resources :ownerships
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get 'home/index'
+
 
   
   # The priority is based upon order of creation: first created -> highest priority.

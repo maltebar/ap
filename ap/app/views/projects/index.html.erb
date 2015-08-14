@@ -1,20 +1,22 @@
-<p id="notice"><%= notice %></p>
+<h1>Project List</h1>
 
-<h1>Listing Projects</h1>
-
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Title</th>
+      <th>Associated Partnerships</th>
+      <th>Github Link</th>
+      <th>Edit</th>
     </tr>
   </thead>
 
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= link_to 'Show', project %></td>
+        <td><%= project.title %></td>
+        <td>Partnership</td>
+        <td><%= link_to 'Github', project.git_link %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

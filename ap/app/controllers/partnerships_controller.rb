@@ -29,7 +29,7 @@ class PartnershipsController < ApplicationController
 
     respond_to do |format|
       if @partnership.save
-        format.html { redirect_to @partnership, notice: 'Partnership was successfully created.' }
+        format.html { redirect_to partnerships_path, notice: 'Partnership was successfully created.' }
         format.json { render :show, status: :created, location: @partnership }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class PartnershipsController < ApplicationController
   def update
     respond_to do |format|
       if @partnership.update(partnership_params)
-        format.html { redirect_to @partnership, notice: 'Partnership was successfully updated.' }
+        format.html { redirect_to partnerships_path, notice: 'Partnership was successfully updated.' }
         format.json { render :show, status: :ok, location: @partnership }
       else
         format.html { render :edit }
@@ -70,6 +70,6 @@ class PartnershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partnership_params
-      params[:partnership]
+      params.require(:partnership).permit(:title, :user_2_id, :user_1_id)
     end
 end

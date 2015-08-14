@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name%>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_1_id, 'Apprentice 1' %><br />
+    <%= f.collection_select :user_1_id, User.order(:name), :id, :name%>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_2_id, 'Apprentice 2' %><br />
+    <%= f.collection_select :user_2_id, User.order(:name), :id, :name%>
+  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
