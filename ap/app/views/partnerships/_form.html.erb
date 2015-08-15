@@ -15,17 +15,15 @@
     <%= f.label :name %><br />
     <%= f.text_field :name%>
   </div>
-
-  <div class="field">
-    <%= f.label :user_1_id, 'Apprentice 1' %><br />
-    <%= f.collection_select :user_1_id, User.order(:name), :id, :name%>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_2_id, 'Apprentice 2' %><br />
-    <%= f.collection_select :user_2_id, User.order(:name), :id, :name%>
-  </div>
-
+  
+<% User.order(:name).each do |user| %>
+  <%= check_box_tag :user_ids,
+                     user.id,
+                     @partnership.users.include?(user),
+                     name: 'partnership[user_ids][]' %>
+  <%= user.name %>
+  <br>
+<% end %>
 
   <div class="actions">
     <%= f.submit %>
