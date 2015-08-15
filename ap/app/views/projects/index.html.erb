@@ -14,7 +14,11 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.title %></td>
-        <td>Partnership</td>
+        <td>
+            <%project.partnerships.each do |x|%>
+              <%= x.name%><br>
+              <%end%>
+        </td>
         <td><%= link_to 'Github', project.git_link %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
       </tr>
