@@ -119,8 +119,10 @@ ActiveRecord::Schema.define(version: 20150815150741) do
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",        limit: 4
+    t.integer  "partnership_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -139,10 +141,9 @@ ActiveRecord::Schema.define(version: 20150815150741) do
   end
 
   create_table "partnerships", force: :cascade do |t|
-    t.integer  "user_1_id",  limit: 4
-    t.integer  "user_2_id",  limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "projects", force: :cascade do |t|

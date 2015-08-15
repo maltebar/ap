@@ -17,8 +17,22 @@ User.create!(name: 'Ken Griffey', email: 'kgriffey@brandeis.edu', password: '123
 User.create!(name: 'Roy Halladay', email: 'rhalladay@brandeis.edu', password: '12345678')
 User.create!(name: 'Mike Hargrove', email: 'mhargrove@brandeis.edu', password: '12345678')
 
-Partnership.create(user_1_id: '3', user_2_id: '4')
-Partnership.create(user_1_id: '5', user_2_id: '6')
-Partnership.create(user_1_id: '7', user_2_id: '8')
-Partnership.create(user_1_id: '9', user_2_id: '10')
+Partnership.create(name: 'Admin')
+Partnership.create(name: 'German Project')
+Partnership.create(name: 'Journalism Project')
+Partnership.create(name: 'Business Project')
+Partnership.create(name: 'Some Other Project')
+
+Membership.create(user_id: '1', partnership_id: '1')
+Membership.create(user_id: '2', partnership_id: '1')
+Membership.create(user_id: '3', partnership_id: '2')
+Membership.create(user_id: '4', partnership_id: '2')
+Membership.create(user_id: '5', partnership_id: '3')
+Membership.create(user_id: '6', partnership_id: '3')
+Membership.create(user_id: '7', partnership_id: '4')
+Membership.create(user_id: '8', partnership_id: '4')
+Membership.create(user_id: '9', partnership_id: '5')
+Membership.create(user_id: '10', partnership_id: '5')
+
+
 

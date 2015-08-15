@@ -70,6 +70,6 @@ class PartnershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partnership_params
-      params.require(:partnership).permit(:title, :user_2_id, :user_1_id)
+      params.require(:partnership).permit(:name)
     end
 end
