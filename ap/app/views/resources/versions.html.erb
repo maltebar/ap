@@ -1,0 +1,14 @@
+<h1>Resource Version History</h1>
+<p>Current version is at top with previous versions listed in descending order by most recent.</p>
+
+<% @resource.versions.each do |version| %>
+<p>
+<div class="boxed"><%=raw version.content%></div>
+</p>
+<p>
+    <strong>By:</strong>
+    <%= User.where(id: version.whodunnit).name %>
+  </p>
+  <br>
+<% end %>
+<%= button_to 'Edit', edit_resource_path(@resource), :method => :get %>

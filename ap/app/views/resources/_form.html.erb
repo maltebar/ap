@@ -1,0 +1,40 @@
+<%= form_for(@resource) do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+      <ul>
+      <% @resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.cktext_area :content, :ckeditor => {:language => 'en'}  %>
+  </div>
+
+ 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+<h1>Resource Version History</h1>
+<p>Current version is at top with previous versions listed in descending order by most recent.</p>
+
+<% @resource.versions.each do |version| %>
+<p>
+<div class="boxed"><%=raw version.object%></div>
+</p>
+<p>
+    <strong>By:</strong>
+    <%= User.where(id: version.whodunnit).name %>
+  </p>
+  <br>
+<% end %>
+<%= button_to 'Edit', edit_resource_path(@resource), :method => :get %>
