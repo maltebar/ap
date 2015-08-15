@@ -13,7 +13,11 @@
     <% @partnerships.each do |partnership| %>
       <tr>
         <td><%=partnership.name%></td>
-        <td>User names in Partnership</td>
+        <td>
+            <%partnership.users.each do |x|%>
+              <%=x.name%><br>
+            <%end%>
+        </td>
         <td><%= link_to 'Edit', edit_partnership_path(partnership) %></td>
       </tr>
     <% end %>
