@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :memberships
   get 'users/userlist' => 'users#userlist'
   
   resources :comment_upvotes
