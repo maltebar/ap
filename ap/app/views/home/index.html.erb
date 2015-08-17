@@ -1,17 +1,38 @@
 <h1>Home</h1>
 
+
+
+<div><div style="float: left; width: 45%; height: 500px; overflow: scroll">
 <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
   
   <thead> <%#table header%>
     <tr>
       <th>Things You Should Know</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+    </tr>
+  </tbody>
+
+</table>
+</div>
+
+
+
+
+<div><div style="float: right; width: 45%; height: 500px; overflow: scroll">
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+    <tr>
       <th>Social Feed</th> 
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td></td>
       <td>
           <div id="tweet_form">
             <%=render 'tweets/message_form'%>
@@ -25,7 +46,7 @@
   </tbody>
 
 </table>
-
+</div>
 <script>
 function executeQuery() {
   $.ajax({
