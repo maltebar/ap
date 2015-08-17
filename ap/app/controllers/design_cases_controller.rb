@@ -7,6 +7,10 @@ class DesignCasesController < ApplicationController
     @design_cases = DesignCase.all
   end
 
+  def design_admin
+    @design_case = DesignCase.find(params[:design_case])
+  end
+
   # GET /design_cases/1
   # GET /design_cases/1.json
   def show
@@ -69,6 +73,6 @@ class DesignCasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def design_case_params
-      params[:design_case]
+      params.require(:design_case).permit(:title, :description, :design_problem, :questions, :solution_1, :solution_2, :solution_3)
     end
 end

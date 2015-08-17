@@ -1,6 +1,8 @@
 class CreateDesignSolutions < ActiveRecord::Migration
   def change
     create_table :design_solutions do |t|
+        t.integer :design_case_id
+        t.integer :user_id
     	t.text :one_pro_1
     	t.text :one_pro_2
     	t.text :one_pro_3

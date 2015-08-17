@@ -1,20 +1,29 @@
-<p id="notice"><%= notice %></p>
+<h1>Assignments</h1>
 
-<h1>Listing Design Cases</h1>
-
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Title</th>
+      <th>Type</th>
+      <th>View</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @design_cases.each do |design_case| %>
+    <% @all_cases = @design_cases + CodeCase.all%>
+    <% @all_cases.each do |c| %>
       <tr>
-        <td><%= link_to 'Show', design_case %></td>
-        <td><%= link_to 'Edit', edit_design_case_path(design_case) %></td>
-        <td><%= link_to 'Destroy', design_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=c.title%></td>
+        <%if @design_cases.include?(c)%>
+          <td>Design Case</td>
+        <%else%>
+          <td>Code Case</td>
+        <%end%>
+        <%if current_user.admin? && @design_cases.include?(c)%>
+          <td><%= link_to 'View Submissions', {:controller => "design_cases", :action => "design_admin", :design_case => c.id}%></td>
+        <%else%>
+          <td><%= link_to 'Start Assignment', c %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +31,7 @@
 
 <br>
 
-<%= link_to 'New Design case', new_design_case_path %>
+<%if current_user.admin?%>
+  <%= link_to 'New Design Case', new_design_case_path %><br>
+  <%= link_to 'New Code Case', new_code_case_path %>
+<%end%>

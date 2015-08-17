@@ -28,7 +28,7 @@ class DesignSolutionsController < ApplicationController
 
     respond_to do |format|
       if @design_solution.save
-        format.html { redirect_to @design_solution, notice: 'Design solution was successfully created.' }
+        format.html { redirect_to design_cases_path, notice: 'Design solution was successfully created.' }
         format.json { render :show, status: :created, location: @design_solution }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DesignSolutionsController < ApplicationController
   def update
     respond_to do |format|
       if @design_solution.update(design_solution_params)
-        format.html { redirect_to @design_solution, notice: 'Design solution was successfully updated.' }
+        format.html { redirect_to design_cases_path, notice: 'Design solution was successfully updated.' }
         format.json { render :show, status: :ok, location: @design_solution }
       else
         format.html { render :edit }
@@ -69,6 +69,11 @@ class DesignSolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def design_solution_params
-      params[:design_solution]
+      params.require(:design_solution).permit(:one_pro_1, :one_pro_2, :one_pro_3, 
+                                              :two_pro_1, :two_pro_2, :two_pro_3, 
+                                              :three_pro_1, :three_pro_2, :three_pro_3, 
+                                              :solution_1_rank_1, :solution_2_rank_1, :solution_3_rank_1,
+                                              :my_solution, :design_case_id, :my_solution_rank, :user_id,  
+                                              :solution_1_rank_2, :solution_2_rank_2, :solution_3_rank_2)
     end
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :resources
   resources :memberships
   get 'users/userlist' => 'users#userlist'
+  get 'design_cases/design_admin'
   
   resources :comment_upvotes
   resources :notifications
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
   resources :design_solutions
   resources :issues
   resources :code_cases
-  resources :design_cases
+  resources :design_cases do
+    resources :design_solutions
+  end
 
   root to: "home#index"
 

@@ -1,4 +1,81 @@
-<p id="notice"><%= notice %></p>
+<h1><%=@design_case.title%></h1>
+<br>
+<h5><b>Your Assignment</b></h5>
+What are the tradeoffs for each of the proposed solutions? Make a pro/con list for each of the solutions. Rank the three solutions presented from best to worst. Then, come up with another solution for this problem. Make a list of the pros and cons related to your solution and rank your own solution (It doesn’t have to be the best solution).<br><br>
 
-<%= link_to 'Edit', edit_design_case_path(@design_case) %> |
+<%@design_solution = DesignSolution.where(user_id: current_user.id, design_case_id: @design_case.id)%>
+<%if @design_solution.exists?%>
+	<%@design_solution = @design_solution.first%>
+<%else%>
+	<%@design_solution = DesignSolution.new%>
+<%end%>
+<%=form_for(@design_solution) do |f|%>
+	<%=f.hidden_field :design_case_id, value: @design_case.id%>
+	<%=f.hidden_field :user_id, value: current_user.id%>
+	<h5><b>Description of Platform/Situation</b></h5>
+	<%=@design_case.description%><br><br>
+
+	<h5><b>Design Problem</b></h5>
+	<%=@design_case.design_problem%><br><br>
+
+	<h5><b>Problems to Be Addressed in the Solution</b></h5>
+	<%=@design_case.questions%><br><br>
+
+	<h5><b>Solution 1</b></h5>
+	<%=@design_case.solution_1%><br>
+	<%=f.label :one_pro_1, 'Pro 1'%>
+	<%=f.text_field :one_pro_1%><br>
+	<%=f.label :one_pro_2, 'Pro 2'%>
+	<%=f.text_field :one_pro_2%><br>
+	<%=f.label :one_pro_3, 'Pro 3'%>
+	<%=f.text_field :one_pro_3%><br><br>
+	<%=f.label :one_con_1, 'Con 1'%>
+	<%=f.text_field :one_con_1%><br>
+	<%=f.label :one_con_2, 'Con 2'%>
+	<%=f.text_field :one_con_2%><br>
+	<%=f.label :one_con_3, 'Con 3'%>
+	<%=f.text_field :one_con_3%><br><br>
+
+	<h5><b>Solution 2</b></h5>
+	<%=@design_case.solution_2%><br><br>
+	<%=f.label :two_pro_1, 'Pro 1'%>
+	<%=f.text_field :one_pro_1%><br>
+	<%=f.label :two_pro_2, 'Pro 2'%>
+	<%=f.text_field :one_pro_2%><br>
+	<%=f.label :two_pro_3, 'Pro 3'%>
+	<%=f.text_field :one_pro_3%><br><br>
+	<%=f.label :two_con_1, 'Con 1'%>
+	<%=f.text_field :one_con_1%><br>
+	<%=f.label :two_con_2, 'Con 2'%>
+	<%=f.text_field :one_con_2%><br>
+	<%=f.label :two_con_3, 'Con 3'%>
+	<%=f.text_field :two_con_3%><br><br>
+
+	<h5><b>Solution 3</b></h5>
+	<%=@design_case.solution_3%><br><br>
+	<%=f.label :three_pro_1, 'Pro 1'%>
+	<%=f.text_field :one_pro_1%><br>
+	<%=f.label :three_pro_2, 'Pro 2'%>
+	<%=f.text_field :one_pro_2%><br>
+	<%=f.label :three_pro_3, 'Pro 3'%>
+	<%=f.text_field :one_pro_3%><br><br>
+	<%=f.label :three_con_1, 'Con 1'%>
+	<%=f.text_field :one_con_1%><br>
+	<%=f.label :three_con_2, 'Con 2'%>
+	<%=f.text_field :one_con_2%><br>
+	<%=f.label :three_con_3, 'Con 3'%>
+	<%=f.text_field :three_con_3%><br><br>
+
+	<h5><b>Rankings of Solutions 1-3</b></h5>
+
+	<h5><b>Your Solution</b></h5>
+	<%=f.text_area :my_solution%>
+	
+	<h5><b>Rankings of Solutions 1-3 Plus My Solution</b></h5>
+
+	<%=f.submit "Submit My Answers"%>
+
+	
+<%end%>
+
 <%= link_to 'Back', design_cases_path %>

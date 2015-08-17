@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150815161615) do
 
   create_table "code_cases", force: :cascade do |t|
     t.text     "description", limit: 65535
+    t.string   "title",       limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -75,6 +76,8 @@ ActiveRecord::Schema.define(version: 20150815161615) do
   end
 
   create_table "design_solutions", force: :cascade do |t|
+    t.integer  "design_case_id",    limit: 4
+    t.integer  "user_id",           limit: 4
     t.text     "one_pro_1",         limit: 65535
     t.text     "one_pro_2",         limit: 65535
     t.text     "one_pro_3",         limit: 65535

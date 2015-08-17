@@ -1,0 +1,11 @@
+<h1>List of Submissions</h1>
+<table class="table table-bordered">
+	<tbody>
+		<%DesignSolution.where(design_case_id: @design_case.id).each do |sol|%>
+			<tr>
+				<td><%=sol.user.name%></td>
+				<td><%= link_to "Show", sol%></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>
