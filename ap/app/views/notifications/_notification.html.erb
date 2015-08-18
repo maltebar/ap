@@ -2,8 +2,7 @@
 <% @notifications.each do |notification|%>
 	<%= div_for notification do%>
 		<tr><td>
-		<p><%= notification.message %></p>
-		<a href= <%= notification.link %>>Link</a>
+		<b><a href= <%= notification.link %>><%= notification.message %></a></b>
 		<p>Posted <%= time_ago_in_words(notification.created_at) %> ago</p>
 	<%end%>
 </tr></td>
