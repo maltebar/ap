@@ -5,6 +5,6 @@ class Comment < ActiveRecord::Base
 	after_save :notify
 
 	def notify
-		Notification.create(message: self.user.nickname.to_s + ' commented on your post ' + self.board_post.title.to_s, user_notified: self.board_post.user_id)
+		Notification.create(message: self.user.nickname.to_s + ' commented on your post ' + self.board_post.title.to_s, user_notified: self.board_post.user_id, link: '/'+'board_posts/'+self.board_post.id.to_s)
 	end
 end
