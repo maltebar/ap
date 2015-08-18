@@ -6,3 +6,10 @@
   <%= f.submit 'Save' %>
 <% end %>
 
+<script>
+	$("#new_notification").bind("ajax:complete", function(event, xhr, status) {
+		$("#notification_message").val('');
+		$('#notifications_box').load('home/index #notifications_box');
+	});
+
+</script>
