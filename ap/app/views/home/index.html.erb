@@ -11,9 +11,18 @@
     </tr>
   </thead>
   <tbody>
+    <div id="notification">
+            <%= render 'notifications/notification' %>
+          </div>
+    <% if current_user.admin? %>
     <tr>
-      <td></td>
+      <td>
+        <div id="notification_form">
+        <%=render 'notifications/notification_form'%>
+        </div>
+      </td>
     </tr>
+    <% end %>
   </tbody>
 
 </table>

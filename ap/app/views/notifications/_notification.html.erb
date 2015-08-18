@@ -1,0 +1,9 @@
+<%@notifications = Notification.all.order('created_at DESC')%>
+<% @notifications.each do |notification|%>
+	<%= div_for notification do%>
+		<tr><td>
+		<p><%= notification.message %></p>
+		<p>Posted <%= time_ago_in_words(notification.created_at) %> ago</p>
+	<%end%>
+</tr></td>
+<%end%>
