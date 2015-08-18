@@ -36,5 +36,10 @@ Membership.create(user_id: '10', partnership_id: '5')
 
 Resource.create(content: '<h2>Web Resources</h2><h3 style=\"margin-left: 40px;\">Ruby on Rails</h3><h4 style=\"margin-left: 80px;\">The Rails Guides</h4><p style=\"margin-left: 120px;\"><a href=\"http://guides.rubyonrails.org/\">http://guides.rubyonrails.org</a></p>')
 
-
-
+Notification.create(message: 'Go to class!', user_notified: '0')
+Notification.create(message: 'Notification to G Ruth 1', link: '', user_notified: '3')
+Notification.create(message: 'Notification to G Ruth 2', user_notified: '3')
+Notification.create(message: 'Notification to G Ruth 3', user_notified: '3')
+Notification.create(message: 'Notification to Joe Dimaggio 1', link: '', user_notified: '4')
+Notification.create(message: 'Notification to Joe Dimaggio 2', link: '', user_notified: '4')
+Notification.create(message: 'Notification to Joe Dimaggio 3', link: '', user_notified: '4')

@@ -129,11 +129,12 @@ ActiveRecord::Schema.define(version: 20150815161615) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string   "message",    limit: 255
-    t.string   "link",       limit: 255
-    t.boolean  "read",       limit: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "user_notified", limit: 4
+    t.string   "message",       limit: 255
+    t.string   "link",          limit: 255
+    t.boolean  "read",          limit: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "ownerships", force: :cascade do |t|
