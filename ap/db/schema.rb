@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729163608) do
+ActiveRecord::Schema.define(version: 20150803152416) do
 
   create_table "ahoy_events", force: :cascade do |t|
     t.uuid     "visit_id",   limit: 16
@@ -125,6 +125,12 @@ ActiveRecord::Schema.define(version: 20150729163608) do
     t.datetime "updated_at",                          null: false
   end
 
+  create_table "resources", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "titles", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "group_id",   limit: 4
@@ -159,6 +165,19 @@ ActiveRecord::Schema.define(version: 20150729163608) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "versions", force: :cascade do |t|
+    t.integer  "versioned_id",   limit: 4
+    t.string   "versioned_type", limit: 255
+    t.text     "yaml",           limit: 65535
+    t.integer  "number",         limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "versions", ["created_at"], name: "index_versions_on_created_at", using: :btree
+  add_index "versions", ["number"], name: "index_versions_on_number", using: :btree
+  add_index "versions", ["versioned_id", "versioned_type"], name: "index_versions_on_versioned_id_and_versioned_type", using: :btree
 
   create_table "visits", force: :cascade do |t|
     t.uuid     "visitor_id",       limit: 16
