@@ -27,15 +27,12 @@
 									end %>
 								</a>
 							</li>
-
-							<li><a class="toplink" href="<%= root_path %>"><%= 'Home' %></a></li>
-							<li><a class="toplink" href=""><%= 'Settings' %></a></li>
-
 							<li><a class="toplink" <%=link_to 'Sign out', destroy_user_session_path, :method => :delete%></a></li>
 						</ul>
 
 
 						<ul class="nav navbar-nav navbar-left"> 
+							<li><a class="toplink" href="<%= root_path %>"><%= 'Home' %></a></li>
 							<li><a class="topbar-link" href="<%= partnerships_path%>"><%= 'Partner Page' %></a></li>
 							<li><a class="topbar-link" href="<%= design_cases_path%>"><%= 'Assignments' %></a></li>
 							<li><a class="topbar-link" href="<%= board_posts_path%>"><%= 'Sounding Board' %></a></li>
