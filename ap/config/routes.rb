@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :memberships
   get 'users/userlist' => 'users#userlist'
   get 'design_cases/design_admin'
+  get 'projects/archive'
   
   resources :comment_upvotes
   resources :notifications

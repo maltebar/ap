@@ -12,6 +12,10 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def archive
+    @projects = Project.all
+  end
+
   # GET /projects/new
   def new
     @project = Project.new

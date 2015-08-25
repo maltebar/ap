@@ -37,7 +37,7 @@
 							<li><a class="topbar-link" href="<%= design_cases_path%>"><%= 'Assignments' %></a></li>
 							<li><a class="topbar-link" href="<%= board_posts_path%>"><%= 'Sounding Board' %></a></li>
 							<li><a class="topbar-link" href="<%= resources_path%>"><%= 'Resources' %></a></li>
-							<li><a class="topbar-link" href=""><%= 'Project Archive' %></a></li>
+							<li><a class="topbar-link" href="<%='projects/archive'%>"><%= 'Project Archive' %></a></li>
 							<%if !current_user.nil? and current_user.admin?%>
 								<li><a class="topbar-link" href="<%= users_path%>"><%= 'Admin Page' %></a></li>
 							<%end%>
