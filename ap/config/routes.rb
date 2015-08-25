@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :board_post_upvotes
   resources :resources
   resources :memberships
   get 'users/userlist' => 'users#userlist'

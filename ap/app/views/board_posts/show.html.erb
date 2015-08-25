@@ -2,8 +2,19 @@
 <br>
 <table class="table table-bordered">
 	<tr>
-		<td width="80%"><%=@board_post.content.html_safe%></td>
-		<td width="20%"align="right">Author:<%=@board_post.user.name%></td>
+		<td width="80%"><%=@board_post.content.html_safe%>
+				<div id="likes" align="right">
+					<%if BoardPostUpvote.where(board_post_id: @board_post.id, user_id: current_user.id).exists?%>
+						<div> You have already liked this post.</div>
+					<%else%>
+						<%=form_for(BoardPostUpvote.new) do |x|%>
+							<%=x.hidden_field :user_id, value: current_user.id%>
+							<%=x.hidden_field :board_post_id, value: @board_post.id%>
+							<%=x.submit "Like"%>
+						<%end%>
+					<%end%>
+				</div></td>
+		<td width="20%"align="right">Author:<%=@board_post.user.name%><br>Upvotes:<%=@board_post.upvotes%></td>
 	</tr>
 </table>
 <table class="table table-bordered">
