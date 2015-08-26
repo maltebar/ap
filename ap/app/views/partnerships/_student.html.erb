@@ -23,3 +23,15 @@ feed = Feedjira::Feed.fetch_and_parse url %>
 		</tbody>
 	</table>
 </div>
+
+
+
+
+<%= form_for @project do |f| %>
+<div class="form-group">
+  <%= f.label :record %>
+  <%= f.file_field :record, class: 'form-control' %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-primary' %>
+
+<% end %>

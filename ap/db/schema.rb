@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826102808) do
+ActiveRecord::Schema.define(version: 20150826201201) do
 
   create_table "ahoy_events", force: :cascade do |t|
     t.uuid     "visit_id",   limit: 16
@@ -179,6 +179,10 @@ ActiveRecord::Schema.define(version: 20150826102808) do
     t.string   "git_link",              limit: 255
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "record_file_name",      limit: 255
+    t.string   "record_content_type",   limit: 255
+    t.integer  "record_file_size",      limit: 4
+    t.datetime "record_updated_at"
   end
 
   create_table "resources", force: :cascade do |t|

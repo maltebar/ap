@@ -34,6 +34,18 @@ Membership.create(user_id: '8', partnership_id: '4')
 Membership.create(user_id: '9', partnership_id: '5')
 Membership.create(user_id: '10', partnership_id: '5')
 
+Project.create(title: 'Project 1')
+Project.create(title: 'Project 2')
+Project.create(title: 'Project 3')
+Project.create(title: 'Project 4')
+Project.create(title: 'Project 5')
+
+Ownership.create(project_id: '1', partnership_id: '1')
+Ownership.create(project_id: '2', partnership_id: '2')
+Ownership.create(project_id: '3', partnership_id: '3')
+Ownership.create(project_id: '4', partnership_id: '4')
+Ownership.create(project_id: '5', partnership_id: '5')
+
 Resource.create(content: '<h2>Web Resources</h2><h3 style=\"margin-left: 40px;\">Ruby on Rails</h3><h4 style=\"margin-left: 80px;\">The Rails Guides</h4><p style=\"margin-left: 120px;\"><a href=\"http://guides.rubyonrails.org/\">http://guides.rubyonrails.org</a></p>')
 
 Notification.create(message: 'Go to class!', user_notified: '0')

@@ -5,7 +5,8 @@ class PartnershipsController < ApplicationController
   # GET /partnerships.json
   def index
     @partnerships = Partnership.all
-    @partnership = Partnership.where('user_1_id= ? OR user_2_id= ?', current_user.id, current_user.id)
+    @partnership = current_user.partnerships.last
+    @project = @partnership.projects.first
   end
 
   # GET /partnerships/1
