@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get 'users/userlist' => 'users#userlist'
   get 'design_cases/design_admin'
   get 'projects/archive'
-  get 'admin_pg/index'
   
+  resources :admin_pg
   resources :comment_upvotes
   resources :notifications
   resources :ownerships
