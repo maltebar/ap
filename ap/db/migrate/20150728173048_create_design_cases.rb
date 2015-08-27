@@ -8,7 +8,8 @@ class CreateDesignCases < ActiveRecord::Migration
     	t.text :solution_1
     	t.text :solution_2
     	t.text :solution_3
-    	
+    	t.boolean :listed
+      t.date :date_assigned
 
       t.timestamps null: false
     end

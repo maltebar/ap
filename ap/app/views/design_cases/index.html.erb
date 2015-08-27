@@ -1,26 +1,50 @@
 <h1>Assignments</h1>
 
+
+<h4>Design Cases</h4>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Type</th>
+      <th>Date Assigned</th>
       <th>Link</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @all_cases = @design_cases + CodeCase.all%>
-    <% @all_cases.each do |c| %>
+    <% @design_cases.where(listed: true).order('date_assigned').each do |c| %>
       <tr>
         <td><%=c.title%></td>
-        <%if @design_cases.include?(c)%>
-          <td>Design Case</td>
-        <%else%>
-          <td>Code Case</td>
-        <%end%>
+        <td><%=c.date_assigned%></td>
         <%if current_user.admin? && @design_cases.include?(c)%>
           <td><%= link_to 'View Submissions', {:controller => "design_cases", :action => "design_admin", :design_case => c.id}%></td>
+        <%else%>
+          <td><%= link_to 'Work on Case', c %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%if current_user.admin?%>
+  <%= link_to 'New Design Case', new_design_case_path %><br>
+<%end%>
+<br>
+
+<h4>Code Cases</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @code_cases.each do |c| %>
+      <tr>
+        <td><%=c.title%></td>
+        <%if current_user.admin? && @code_cases.include?(c)%>
+          <td><%= link_to 'View Submissions', {:controller => "code_cases", :action => "design_admin", :design_case => c.id}%></td>
         <%else%>
           <td><%= link_to 'Work on Case', c %></td>
         <%end%>
@@ -32,6 +56,5 @@
 <br>
 
 <%if current_user.admin?%>
-  <%= link_to 'New Design Case', new_design_case_path %><br>
   <%= link_to 'New Code Case', new_code_case_path %>
 <%end%>

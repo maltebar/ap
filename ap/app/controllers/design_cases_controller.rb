@@ -5,6 +5,7 @@ class DesignCasesController < ApplicationController
   # GET /design_cases.json
   def index
     @design_cases = DesignCase.all
+    @code_cases = CodeCase.all
   end
 
   def design_admin
@@ -73,6 +74,6 @@ class DesignCasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def design_case_params
-      params.require(:design_case).permit(:title, :description, :design_problem, :questions, :solution_1, :solution_2, :solution_3)
+      params.require(:design_case).permit(:title, :description, :design_problem, :questions, :solution_1, :solution_2, :solution_3, :listed, :date_assigned)
     end
 end

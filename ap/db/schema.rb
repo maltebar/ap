@@ -58,10 +58,12 @@ ActiveRecord::Schema.define(version: 20150826201201) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "code_cases", force: :cascade do |t|
-    t.text     "description", limit: 65535
-    t.string   "title",       limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description",   limit: 65535
+    t.string   "title",         limit: 255
+    t.boolean  "listed",        limit: 1
+    t.date     "date_assigned"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "code_solutions", force: :cascade do |t|
@@ -94,6 +96,8 @@ ActiveRecord::Schema.define(version: 20150826201201) do
     t.text     "solution_1",     limit: 65535
     t.text     "solution_2",     limit: 65535
     t.text     "solution_3",     limit: 65535
+    t.boolean  "listed",         limit: 1
+    t.date     "date_assigned"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
