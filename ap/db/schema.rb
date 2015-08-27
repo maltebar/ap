@@ -209,6 +209,7 @@ ActiveRecord::Schema.define(version: 20150826201201) do
     t.string   "name",                   limit: 255
     t.string   "nickname",               limit: 255
     t.boolean  "admin",                  limit: 1,   default: false
+    t.boolean  "optout",                 limit: 1,   default: false
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.string   "email",                  limit: 255, default: "",    null: false

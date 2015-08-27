@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :name
     	t.string :nickname
     	t.boolean :admin, default: false
+    	t.boolean :optout, default: false
 
       t.timestamps null: false
     end
