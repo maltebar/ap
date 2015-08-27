@@ -71,9 +71,13 @@ class DesignSolutionsController < ApplicationController
     def design_solution_params
       params.require(:design_solution).permit(:one_pro_1, :one_pro_2, :one_pro_3, 
                                               :two_pro_1, :two_pro_2, :two_pro_3, 
-                                              :three_pro_1, :three_pro_2, :three_pro_3, 
+                                              :three_pro_1, :three_pro_2, :three_pro_3,
+                                              :one_con_1, :one_con_2, :one_con_3, 
+                                              :two_con_1, :two_con_2, :two_con_3, 
+                                              :three_con_1, :three_con_2, :three_con_3, 
                                               :solution_1_rank_1, :solution_2_rank_1, :solution_3_rank_1,
                                               :my_solution, :design_case_id, :my_solution_rank, :user_id,  
-                                              :solution_1_rank_2, :solution_2_rank_2, :solution_3_rank_2)
+                                              :solution_1_rank_2, :solution_2_rank_2, :solution_3_rank_2,
+                                              :justification)
     end
 end

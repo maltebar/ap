@@ -5,7 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Type</th>
-      <th>View</th>
+      <th>Link</th>
     </tr>
   </thead>
 
@@ -22,7 +22,7 @@
         <%if current_user.admin? && @design_cases.include?(c)%>
           <td><%= link_to 'View Submissions', {:controller => "design_cases", :action => "design_admin", :design_case => c.id}%></td>
         <%else%>
-          <td><%= link_to 'Start Assignment', c %></td>
+          <td><%= link_to 'Work on Case', c %></td>
         <%end%>
       </tr>
     <% end %>

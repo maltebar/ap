@@ -29,6 +29,7 @@ class CreateDesignSolutions < ActiveRecord::Migration
     	t.integer :solution_2_rank_2
     	t.integer :solution_3_rank_2
     	t.integer :my_solution_rank
+        t.text :justification
       t.timestamps null: false
     end
   end

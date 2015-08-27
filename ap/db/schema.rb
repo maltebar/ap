@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20150826201201) do
     t.integer  "solution_2_rank_2", limit: 4
     t.integer  "solution_3_rank_2", limit: 4
     t.integer  "my_solution_rank",  limit: 4
+    t.text     "justification",     limit: 65535
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
