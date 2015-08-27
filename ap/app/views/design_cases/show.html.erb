@@ -67,14 +67,35 @@ What are the tradeoffs for each of the proposed solutions? Make a pro/con list f
 	<%=f.text_field :three_con_3%><br><br>
 
 	<h5><b>Rankings of Solutions 1-3</b></h5>
+	<%=f.label :solution_1_rank_1, "Solution 1 Rank"%>
+	<%=f.select :solution_1_rank_1, [1,2,3]%>
+	<br>
+	<%=f.label :solution_2_rank_1, "Solution 2 Rank"%>
+	<%=f.select :solution_2_rank_1, [1,2,3] %>
+	<br>
+	<%=f.label :solution_3_rank_1, "Solution 3 Rank"%>
+	<%=f.select :solution_3_rank_1, [1,2,3]%>
 
 	<h5><b>Your Solution</b></h5>
 	<%=f.text_area :my_solution%>
 	
 	<h5><b>Rankings of Solutions 1-3 Plus My Solution</b></h5>
+	<%=f.label :solution_1_rank_2, "Solution 1 Rank"%>
+	<%=f.select :solution_1_rank_2, [1,2,3,4]%>
+	<br>
+	<%=f.label :solution_2_rank_2, "Solution 2 Rank"%>
+	<%=f.select :solution_2_rank_2, [1,2,3,4]%>
+	<br>
+	<%=f.label :solution_3_rank_2, "Solution 3 Rank"%>
+	<%=f.select :solution_3_rank_2, [1,2,3,4]%>
+	<br>
+	<%=f.label :my_solution_rank, "My Solution Rank"%>
+	<%=f.select :my_solution_rank, [1,2,3,4]%>
 
 	<h5><b>Justify Your Final Rankings</b></h5>
 	<%=f.text_area :justification%>
+
+	<br>
 
 	<%=f.submit "Save My Answers"%>
 
