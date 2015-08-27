@@ -1,10 +1,23 @@
-<h1>Admin Page</h1>
+<h1>Listing Users</h1>
 
-<br><br>
-<%= link_to 'User List', {:controller => "users", :action => "userlist"} %>
-<br><br><br>
-<%= link_to 'Projects List', {:controller => "projects", :action => "index"}%>
-<br><br><br>
-<%= link_to 'Partnership List', {:controller => "partnerships", :action => "index"}%>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Nickname</th>
+      <th>Email</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.nickname %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
+<br>
