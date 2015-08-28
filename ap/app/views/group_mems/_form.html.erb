@@ -1,0 +1,17 @@
+<%= form_for(@group_mem) do |f| %>
+  <% if @group_mem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@group_mem.errors.count, "error") %> prohibited this group_mem from being saved:</h2>
+
+      <ul>
+      <% @group_mem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

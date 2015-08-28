@@ -1,8 +1,25 @@
-<% if current_user.admin? %>
-<%= render 'admin' %>
-<% else %>
-<%= render 'student' %>
-<% end %>
+<h1>My Project List</h1>
 
+<%if !@projects.any?%>
+  <h4>You are not currently assigned to any projects</h4>
+<%else%>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Link to Project Page</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @projects.each do |proj| %>
+        <tr>
+          <td><%=proj.title%></td>
+          <td><%=link_to "View", proj%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%end%>
 
 

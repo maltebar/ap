@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :group_mems
   mount Ckeditor::Engine => '/ckeditor'
   resources :board_post_upvotes
   resources :resources
   resources :memberships
   get 'users/userlist' => 'users#userlist'
   get 'design_cases/design_admin'
+  get 'partnerships/admin_form'
  
   resources :archive 
   resources :admin_pg

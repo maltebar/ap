@@ -7,6 +7,7 @@
       <th>Associated Partnerships</th>
       <th>Github Link</th>
       <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
@@ -21,6 +22,7 @@
         </td>
         <td><%= link_to 'Github', project.git_link %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

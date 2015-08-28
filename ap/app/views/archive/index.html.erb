@@ -16,7 +16,7 @@
         <td><%=link_to "Github", proj.git_link%></td>
         <td><div style="height:100px; overflow:hidden"%><%=proj.technical_description.html_safe%></div>
             <br><br>
-            <div align="right"><button class="btn btn-default"><%= link_to 'View', proj %></button></div>
+            <div align="right"><button class="btn btn-default"><%= link_to 'View', {:controller => 'archive', :action => 'show', :id => proj.id} %></button></div>
         </td>
       </tr>
     <% end %>
