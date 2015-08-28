@@ -24,23 +24,30 @@ feed = Feedjira::Feed.fetch_and_parse url %>
 	</table>
 </div>
 
+<% @project.attachments.each do |att| %>
 
+<div class="media">
+  <div class="media-left">
+    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= att.title %></h4>
+  </div>
+</div>
 
+<% end %>
+<br>
 
-<%= form_for([@project], remote: true) do |f| %>
+<%= form_for([Attachment.new], remote: true) do |f| %>
 <div class="form-group">
+	<%= f.label :title %>
+	<%= f.text_field :title %>
   <%= f.label :record %>
   <%= f.file_field :record, class: 'form-control' %>
+  <%= f.hidden_field :project_id, value: @project.id %> 
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </div>
 <%= f.submit 'Upload', class: 'btn btn-primary'%>
 
 <% end %>
 
-<script>
-	$("[name='commit']").on("click", function(event){
-		event.preventDefault();
-		window.location.reload();
-	});
-
-</script>

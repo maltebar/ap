@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828131855) do
+ActiveRecord::Schema.define(version: 20150828183250) do
 
   create_table "ahoy_events", force: :cascade do |t|
     t.uuid     "visit_id",   limit: 16
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20150828131855) do
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "project_id",          limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "title",               limit: 255
+    t.string   "record_file_name",    limit: 255
+    t.string   "record_content_type", limit: 255
+    t.integer  "record_file_size",    limit: 4
+    t.datetime "record_updated_at"
+  end
 
   create_table "board_post_upvotes", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
@@ -191,10 +202,6 @@ ActiveRecord::Schema.define(version: 20150828131855) do
     t.string   "git_link",              limit: 255
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "record_file_name",      limit: 255
-    t.string   "record_content_type",   limit: 255
-    t.integer  "record_file_size",      limit: 4
-    t.datetime "record_updated_at"
   end
 
   create_table "resources", force: :cascade do |t|

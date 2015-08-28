@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project = Project.find(params[:id])
   end
 
   def archive
@@ -66,6 +67,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :git_link, :technical_description, :record, :partnership_ids => [])
+      params.require(:project).permit(:title, :git_link, :technical_description, :partnership_ids => [])
     end
 end

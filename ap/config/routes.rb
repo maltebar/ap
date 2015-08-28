@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :attachments
   resources :group_mems
   mount Ckeditor::Engine => '/ckeditor'
   resources :board_post_upvotes
