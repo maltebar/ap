@@ -44,7 +44,7 @@
       <tr>
         <td><%=c.title%></td>
         <%if current_user.admin? && @code_cases.include?(c)%>
-          <td><%= link_to 'View Submissions', {:controller => "code_cases", :action => "design_admin", :design_case => c.id}%></td>
+          <td><%= link_to 'View Submissions', {:controller => "code_cases", :action => "code_admin", :code_case => c.id}%></td>
         <%else%>
           <td><%= link_to 'Work on Case', c %></td>
         <%end%>

@@ -12,6 +12,10 @@ class CodeCasesController < ApplicationController
   def show
   end
 
+  def code_admin
+    @code_case = CodeCase.find(params[:code_case])
+  end
+
   # GET /code_cases/new
   def new
     @code_case = CodeCase.new
@@ -69,6 +73,6 @@ class CodeCasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def code_case_params
-      params[:code_case]
+      params.require(:code_case).permit(:title, :description, :listed, :date_assigned)
     end
 end

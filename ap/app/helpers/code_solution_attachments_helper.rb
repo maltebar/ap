@@ -1,0 +1,2 @@
+module CodeSolutionAttachmentsHelper
+end

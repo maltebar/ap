@@ -1,17 +1,39 @@
-<%= form_for(@code_case) do |f| %>
-  <% if @code_case.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@code_case.errors.count, "error") %> prohibited this code_case from being saved:</h2>
+<%=form_for(@code_case) do |g|%>
+  <%=g.label :title%>
+  <%=g.text_field :title%><br>
+  <%=g.label :description%>
+  <%=g.text_area :description%><br>
+  <%= g.label :date_assigned %>
+  <%= g.date_select :date_assigned%><br>
+  <%= g.label :listed %>
+  <%= g.check_box :listed%><br>
+  <%= g.submit "Create Assignment"%>
+<%end%>
+<br>
 
-      <ul>
-      <% @code_case.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% @code_case.code_case_attachments.each do |att| %>
 
-  <div class="actions">
-    <%= f.submit %>
+<div class="media">
+  <div class="media-left">
+    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
   </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= att.title %></h4>
+  </div>
+</div>
+
+<% end %>
+<br>
+
+<%= form_for([CodeCaseAttachment.new], remote: true) do |f| %>
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :record %>
+  <%= f.file_field :record, class: 'form-control' %>
+  <%= f.hidden_field :code_case_id, value: @code_case.id %> 
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-primary'%>
+
 <% end %>

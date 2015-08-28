@@ -1,17 +1,26 @@
-<%= form_for(@code_solution) do |f| %>
-  <% if @code_solution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@code_solution.errors.count, "error") %> prohibited this code_solution from being saved:</h2>
+<% @code_solution.attachments.each do |att| %>
 
-      <ul>
-      <% @code_solution.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+<div class="media">
+  <div class="media-left">
+    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
   </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= att.title %></h4>
+  </div>
+</div>
+
+<% end %>
+<br>
+
+<%= form_for([CodeSolutionAttachment.new], remote: true) do |f| %>
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :record %>
+  <%= f.file_field :record, class: 'form-control' %>
+  <%= f.hidden_field :code_solution_id, value: @code_solution.id %> 
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-primary'%>
+
 <% end %>

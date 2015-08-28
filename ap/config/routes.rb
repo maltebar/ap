@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :code_solution_attachments
+  resources :code_case_attachments
   resources :attachments
   resources :group_mems
   mount Ckeditor::Engine => '/ckeditor'
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   resources :memberships
   get 'users/userlist' => 'users#userlist'
   get 'design_cases/design_admin'
+  get 'code_cases/code_admin'
   get 'partnerships/admin_form'
  
   resources :archive 
