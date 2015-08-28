@@ -14,6 +14,9 @@ class PartnershipsController < ApplicationController
   def show
   end
 
+  def admin_form
+    @partnerships = Partnership.all
+  end
   # GET /partnerships/new
   def new
     @partnership = Partnership.new
@@ -30,7 +33,7 @@ class PartnershipsController < ApplicationController
 
     respond_to do |format|
       if @partnership.save
-        format.html { redirect_to partnerships_path, notice: 'Partnership was successfully created.' }
+        format.html { redirect_to partnerships_admin_form_path, notice: 'Partnership was successfully created.' }
         format.json { render :show, status: :created, location: @partnership }
       else
         format.html { render :new }
@@ -44,7 +47,7 @@ class PartnershipsController < ApplicationController
   def update
     respond_to do |format|
       if @partnership.update(partnership_params)
-        format.html { redirect_to partnerships_path, notice: 'Partnership was successfully updated.' }
+        format.html { redirect_to partnerships_admin_form_path, notice: 'Partnership was successfully updated.' }
         format.json { render :show, status: :ok, location: @partnership }
       else
         format.html { render :edit }

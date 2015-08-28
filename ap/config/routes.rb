@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :memberships
   get 'users/userlist' => 'users#userlist'
   get 'design_cases/design_admin'
+  get 'partnerships/admin_form'
  
   resources :archive 
   resources :admin_pg
