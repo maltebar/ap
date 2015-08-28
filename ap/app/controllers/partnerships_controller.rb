@@ -66,7 +66,7 @@ class PartnershipsController < ApplicationController
   def destroy
     @partnership.destroy
     respond_to do |format|
-      format.html { redirect_to partnerships_url, notice: 'Partnership was successfully destroyed.' }
+      format.html { redirect_to partnerships_admin_form_path, notice: 'Partnership was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
