@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :memberships
 	has_many :partnerships, :through => :memberships
+  has_many :groups, :through => :group_mems
+  has_many :group_mems
 	
 
 	after_create :update_nickname

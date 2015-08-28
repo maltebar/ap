@@ -11,6 +11,20 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name%>
+  </div>
+  
+<% User.order(:name).each do |user| %>
+  <%= check_box_tag :user_ids,
+                     user.id,
+                     @group.users.include?(user),
+                     name: 'group[user_ids][]' %>
+  <%= user.name %>
+  <br>
+<% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

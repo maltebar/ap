@@ -1,18 +1,23 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Groups</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Name</th>
+      <th>Members</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= link_to 'Show', group %></td>
+        <td><%= group.name %></td>
+        <td><% group.users.each do |x| %>
+                <%= x.name%><br>
+            <%end%>
+        </td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
