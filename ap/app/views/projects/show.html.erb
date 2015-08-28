@@ -1,1 +1,46 @@
+<h1>My Partner Page</h1>
 
+<% url = "https://github.com/maltebar/ap/commits/master.atom" 
+feed = Feedjira::Feed.fetch_and_parse url %>
+<h3>GitHub Feed</h3>
+<div><div style="float: left; width: 45%; height: 500px; overflow: scroll">
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Commit Message</th>
+				<th>By</th>
+				<th>Link</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% feed.entries.each do |entry|%>
+			<tr>
+				<td><%= entry.title %></td>
+				<td><%= entry.author %>  <%= time_ago_in_words (entry.published) %> ago</td>
+				<td><a href= <%=entry.url%> target="blank" >Go to this commit</a></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+
+
+
+<%= form_for([@project], remote: true) do |f| %>
+<div class="form-group">
+  <%= f.label :record %>
+  <%= f.file_field :record, class: 'form-control' %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-primary'%>
+
+<% end %>
+
+<script>
+	$("[name='commit']").on("click", function(event){
+		event.preventDefault();
+		window.location.reload();
+	});
+
+</script>

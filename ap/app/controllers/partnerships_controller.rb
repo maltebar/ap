@@ -4,9 +4,14 @@ class PartnershipsController < ApplicationController
   # GET /partnerships
   # GET /partnerships.json
   def index
-    @partnerships = Partnership.all
-    @partnership = current_user.partnerships.last
-    @project = @partnership.projects.first
+    @partnerships = current_user.partnerships
+    @projects = Array.new
+    @partnerships.each do |partner|
+      partner.projects.each do |proj|
+        @projects << proj
+      end
+
+    end
   end
 
   # GET /partnerships/1

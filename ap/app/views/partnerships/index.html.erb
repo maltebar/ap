@@ -1,8 +1,21 @@
-<% if current_user.admin? %>
+<h1>My Project List</h1>
 
-<% else %>
-<%= render 'student' %>
-<% end %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Link to Project Page</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @projects.each do |proj| %>
+      <tr>
+        <td><%=proj.title%></td>
+        <td><%=link_to "View", proj%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 
