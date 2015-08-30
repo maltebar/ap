@@ -187,6 +187,8 @@ ActiveRecord::Schema.define(version: 20150828192556) do
   create_table "issues", force: :cascade do |t|
     t.text     "content",    limit: 65535
     t.boolean  "complete",   limit: 1
+    t.integer  "user_id",    limit: 4
+    t.integer  "project_id", limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end

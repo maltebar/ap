@@ -24,6 +24,46 @@ feed = Feedjira::Feed.fetch_and_parse url %>
 	</table>
 </div>
 
+<div><div style="float: right; width: 45%; height: 500px; overflow: scroll">
+<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+  
+  <thead> <%#table header%>
+    <tr>
+      <th>Issues List</th> 
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+          <div id="issue_form">
+            <%=render 'issues/message_form'%>
+          </div>
+          <div id="issues_box">
+            <%= render 'issues/issue' %>
+          </div>
+          
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+</div>
+<script>
+function executeQuery() {
+  $.ajax({
+    success: function(data) {
+      $('#issues_box').load('<%=@project.id%> #issues_box')
+    }
+  });
+  setTimeout(executeQuery, 60000);
+}
+
+$(document).ready(function() {
+  setTimeout(executeQuery, 60000);
+});
+</script>
+
 <% @project.attachments.each do |att| %>
 
 <div class="media">
