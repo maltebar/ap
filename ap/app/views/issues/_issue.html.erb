@@ -1,8 +1,12 @@
 
 
-<%@issues = Issue.where(project_id: @project.id).order('created_at DESC').order('complete DESC')%>
+<%@issues = Issue.where(project_id: @project.id).order("complete asc, created_at desc")%>
 <% @issues.each do |iss|%>
 	<%= div_for iss do%>
+		<%=form_for(iss) do |f|%>
+			<%=f.hidden_field :complete, value: true%>
+			<%=f.submit "Mark Complete"%>
+		<%end%>
 		<p><%= iss.content %></p>
 		<p>Posted <%= time_ago_in_words(iss.created_at) %> ago by <%=iss.user.nickname%></p>
 	<%end%>
