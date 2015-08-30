@@ -8,6 +8,9 @@
       <th>Title</th>
       <th>Date Assigned</th>
       <th>Link</th>
+      <%if current_user.admin?%>
+          <th>Edit</th>
+      <%end%>
     </tr>
   </thead>
 
@@ -20,6 +23,9 @@
           <td><%= link_to 'View Submissions', {:controller => "design_cases", :action => "design_admin", :design_case => c.id}%></td>
         <%else%>
           <td><%= link_to 'Work on Case', c %></td>
+        <%end%>
+        <%if current_user.admin?%>
+          <td> <%=link_to 'Edit', edit_design_case_path(c)%></td>
         <%end%>
       </tr>
     <% end %>
@@ -36,6 +42,9 @@
     <tr>
       <th>Title</th>
       <th>Link</th>
+      <%if current_user.admin?%>
+          <th>Edit</th>
+      <%end%>
     </tr>
   </thead>
 
@@ -47,6 +56,9 @@
           <td><%= link_to 'View Submissions', {:controller => "code_cases", :action => "code_admin", :code_case => c.id}%></td>
         <%else%>
           <td><%= link_to 'Work on Case', c %></td>
+        <%end%>
+        <%if current_user.admin?%>
+          <td> <%=link_to 'Edit', edit_code_case_path(c)%></td>
         <%end%>
       </tr>
     <% end %>

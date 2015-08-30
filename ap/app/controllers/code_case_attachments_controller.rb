@@ -28,7 +28,7 @@ class CodeCaseAttachmentsController < ApplicationController
 
     respond_to do |format|
       if @code_case_attachment.save
-        format.html { redirect_to @code_case_attachment, notice: 'Code case attachment was successfully created.' }
+        format.html { redirect_to edit_code_case_path(@code_case_attachment.code_case), notice: 'Code case attachment was successfully created.' }
         format.json { render :show, status: :created, location: @code_case_attachment }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CodeCaseAttachmentsController < ApplicationController
   def update
     respond_to do |format|
       if @code_case_attachment.update(code_case_attachment_params)
-        format.html { redirect_to @code_case_attachment, notice: 'Code case attachment was successfully updated.' }
+        format.html { redirect_to edit_code_case_path(@code_case_attachment.code_case), notice: 'Code case attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @code_case_attachment }
       else
         format.html { render :edit }

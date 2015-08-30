@@ -10,6 +10,7 @@ class DesignSolutionsController < ApplicationController
   # GET /design_solutions/1
   # GET /design_solutions/1.json
   def show
+    @design_case = @design_solution.design_case
   end
 
   # GET /design_solutions/new

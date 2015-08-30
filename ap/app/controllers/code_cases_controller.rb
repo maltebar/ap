@@ -32,7 +32,7 @@ class CodeCasesController < ApplicationController
 
     respond_to do |format|
       if @code_case.save
-        format.html { redirect_to @code_case, notice: 'Code case was successfully created.' }
+        format.html { redirect_to design_cases_path, notice: 'Code case was successfully created.' }
         format.json { render :show, status: :created, location: @code_case }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class CodeCasesController < ApplicationController
   def update
     respond_to do |format|
       if @code_case.update(code_case_params)
-        format.html { redirect_to @code_case, notice: 'Code case was successfully updated.' }
+        format.html { redirect_to design_cases_path, notice: 'Code case was successfully updated.' }
         format.json { render :show, status: :ok, location: @code_case }
       else
         format.html { render :edit }

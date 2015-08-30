@@ -31,7 +31,7 @@ feed = Feedjira::Feed.fetch_and_parse url %>
     <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
   </div>
   <div class="media-body">
-    <h4 class="media-heading"><%= att.title %></h4>
+    <h4 class="media-heading"><%= att.record_file_name %></h4>
   </div>
 </div>
 
@@ -40,8 +40,6 @@ feed = Feedjira::Feed.fetch_and_parse url %>
 
 <%= form_for([Attachment.new], remote: true) do |f| %>
 <div class="form-group">
-	<%= f.label :title %>
-	<%= f.text_field :title %>
   <%= f.label :record %>
   <%= f.file_field :record, class: 'form-control' %>
   <%= f.hidden_field :project_id, value: @project.id %> 
