@@ -28,7 +28,7 @@ class CodeSolutionAttachmentsController < ApplicationController
 
     respond_to do |format|
       if @code_solution_attachment.save
-        format.html { redirect_to @code_solution_attachment, notice: 'Code solution attachment was successfully created.' }
+        format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment was successfully created.' }
         format.json { render :show, status: :created, location: @code_solution_attachment }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CodeSolutionAttachmentsController < ApplicationController
   def update
     respond_to do |format|
       if @code_solution_attachment.update(code_solution_attachment_params)
-        format.html { redirect_to @code_solution_attachment, notice: 'Code solution attachment was successfully updated.' }
+        format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @code_solution_attachment }
       else
         format.html { render :edit }

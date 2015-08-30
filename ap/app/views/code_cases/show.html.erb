@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h1>Code Case Solution</h1>
 
-<%= link_to 'Edit', edit_code_case_path(@code_case) %> |
-<%= link_to 'Back', code_cases_path %>
+<%@code_solution = CodeSolution.where(user_id: current_user.id, code_case_id: @code_case.id)%>
+<%if @code_solution.exists?%>
+	<%@code_solution = @code_solution.first%>
+<%else%>
+	<%@code_solution = CodeSolution.new%>
+<%end%>
+
+<%=form_for(@code_solution) do |f|%>
+	<%=f.hidden_field :code_case_id, value: @code_case.id%>
+	<%=f.hidden_field :user_id, value: current_user.id%>
+	<%=f.label :content%>
+	<%=f.text_area :content%>
+	<%=f.submit 'Save Text and Continue to Attach Files'%>
+<%end%>

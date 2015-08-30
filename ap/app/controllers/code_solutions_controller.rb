@@ -10,6 +10,7 @@ class CodeSolutionsController < ApplicationController
   # GET /code_solutions/1
   # GET /code_solutions/1.json
   def show
+    @code_case = @code_solution.code_case
   end
 
   # GET /code_solutions/new
@@ -69,6 +70,6 @@ class CodeSolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def code_solution_params
-      params[:code_solution]
+      params.require(:code_solution).permit(:content, :user_id, :code_case_id)
     end
 end

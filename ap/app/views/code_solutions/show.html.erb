@@ -1,4 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h1><%=@code_case.title%></h1>
+<p><%=@code_case.description%></p>
 
-<%= link_to 'Edit', edit_code_solution_path(@code_solution) %> |
-<%= link_to 'Back', code_solutions_path %>
+<h5>My Code Solution</h5>
+<p><%=@code_solution.content%></p>
+
+
+<% @code_solution.code_solution_attachments.each do |att| %>
+
+	<div class="media">
+	  <div class="media-left">
+	    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
+	  </div>
+	  <div class="media-body">
+	    <h4 class="media-heading"><%= att.record_file_name %></h4>
+	  </div>
+	</div>
+
+	<% end %>
+	<br>
+
+	<%= form_for([CodeSolutionAttachment.new], remote: true) do |f| %>
+	<div class="form-group">
+	  <%= f.label :record %>
+	  <%= f.file_field :record, class: 'form-control' %>
+	  <%= f.hidden_field :code_solution_id, value: @code_solution.id %> 
+	  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	</div>
+	<%= f.submit 'Upload', class: 'btn btn-primary'%>
+
+<% end %>
