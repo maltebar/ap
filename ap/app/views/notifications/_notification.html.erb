@@ -1,7 +1,7 @@
-
+<%@notifications = Notification.where(user_notified: [0, current_user.id]).order('created_at DESC')%>
 <% @notifications.each do |notification|%>
 	<%= div_for notification do%>
-		<tr><td>
+
 		<%if notification.read? && !notification.created_by_admin?%>
 			<a class='notify_link' id="<%=notification.id%>" href= <%= notification.link %>><%= notification.message %></a>
 		<%else%>
@@ -15,7 +15,7 @@
 			<%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %>
 		<%end%>
 	<%end%>
-</tr></td>
+
 
 <script>
 $('#<%=notification.id%>').click(function() {

@@ -28,11 +28,11 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       if @notification.save
-        format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
-        format.json { render :show, status: :created, location: @notification }
+        format.html { redirect_to root_path }
+        format.js
       else
+        flash[:notice] = "Message Failed"
         format.html { render :new }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +43,10 @@ class NotificationsController < ApplicationController
     respond_to do |format|
       if @notification.update(notification_params)
         format.html { redirect_to root_path, notice: 'Notification was successfully updated.' }
-        format.json { render :show, status: :ok, location: @notification }
+        format.js
       else
         format.html { render :edit }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

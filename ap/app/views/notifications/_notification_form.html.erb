@@ -1,6 +1,6 @@
 <%@notification = Notification.new%>
 <%= form_for([@notification], remote: true) do |f| %>
-  <%= label :message, "Add a note." %><br />
+  <%= f.label :message, "Add a note." %><br />
   <%= f.text_area :message %><br />
   <%= f.hidden_field :user_notified, value: 0 %>
   <%= f.hidden_field :created_by_admin, value: true%>
@@ -13,7 +13,7 @@
 <script>
 	$("#new_notification").bind("ajax:complete", function(event, xhr, status) {
 		$("#notification_message").val('');
-		$('#notifications_box').load('home/index #notifications_box');
+		$("#notifications_box").load('home/index #notifications_box');
 	});
 
 </script>

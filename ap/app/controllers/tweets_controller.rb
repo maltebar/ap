@@ -29,7 +29,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to home_path }
+        format.html { redirect_to root_path }
         format.js
       else
         flash[:notice] = "Message Failed"
