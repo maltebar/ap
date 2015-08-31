@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
 
   def archive
     @projects = Project.all
+    ahoy.track "Visited Archives"
   end
 
   # GET /projects/new

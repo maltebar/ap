@@ -5,6 +5,7 @@ class ResourcesController < ApplicationController
   # GET /resources.json
   def index
     @resource = Resource.find(1)
+    ahoy.track "Visited Resources"
   end
 
   # GET /resources/1
@@ -24,6 +25,7 @@ class ResourcesController < ApplicationController
 
   def versions
     @resource = Resource.find(1)
+    ahoy.track "Visited Resource Versions", post_id: @post.id
   end
 
   # POST /resources

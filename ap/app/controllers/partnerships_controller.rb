@@ -10,8 +10,8 @@ class PartnershipsController < ApplicationController
       partner.projects.each do |proj|
         @projects << proj
       end
-
     end
+    ahoy.track "Visited Partner Page"
   end
 
   # GET /partnerships/1

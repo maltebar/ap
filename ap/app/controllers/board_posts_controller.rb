@@ -5,6 +5,7 @@ class BoardPostsController < ApplicationController
   # GET /board_posts.json
   def index
     @board_posts = BoardPost.all.order('updated_at DESC')
+    ahoy.track "Visited Board"
   end
 
   # GET /board_posts/1
