@@ -41,6 +41,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Date Assigned</th>
       <th>Link</th>
       <%if current_user.admin?%>
           <th>Edit</th>
@@ -52,6 +53,7 @@
     <% @code_cases.each do |c| %>
       <tr>
         <td><%=c.title%></td>
+        <td><%=c.date_assigned%></td>
         <%if current_user.admin? && @code_cases.include?(c)%>
           <td><%= link_to 'View Submissions', {:controller => "code_cases", :action => "code_admin", :code_case => c.id}%></td>
         <%else%>
