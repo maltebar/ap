@@ -5,6 +5,7 @@ class CreateNotifications < ActiveRecord::Migration
     	t.string :message
     	t.string :link
     	t.boolean :read
+    	t.boolean :created_by_admin, default: false
 
       t.timestamps null: false
     end

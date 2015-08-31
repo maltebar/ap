@@ -2,7 +2,7 @@
 <% @notifications.each do |notification|%>
 	<%= div_for notification do%>
 		<tr><td>
-		<%if notification.read?%>
+		<%if notification.read? && !notification.created_by_admin?%>
 			<a class='notify_link' id="<%=notification.id%>" href= <%= notification.link %>><%= notification.message %></a>
 		<%else%>
 			<b><a class='notify_link' id="<%=notification.id%>" href= <%= notification.link %>><%= notification.message %></a></b>
