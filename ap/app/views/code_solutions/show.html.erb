@@ -1,31 +1,32 @@
 <h1><%=@code_case.title%></h1>
+<h4>Description</h4>
 <p><%=@code_case.description%></p>
 
-<h5>My Code Solution</h5>
+<h4>My Code Solution</h4>
 <p><%=@code_solution.content%></p>
 
+<div style='display:inline-block;width:100%;max-height:250px;overflow:scroll'>
+	<% @code_solution.code_solution_attachments.each do |att| %>
 
-<% @code_solution.code_solution_attachments.each do |att| %>
-
-	<div class="media">
-	  <div class="media-left">
-	    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
-	  </div>
-	  <div class="media-body">
-	    <h4 class="media-heading"><%= att.record_file_name %></h4>
-	  </div>
-	</div>
+		<div class="media" style="width:48%;border:thin dotted gray">
+		  <div class="media-left" style="float:left;width:10%;">
+		    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
+		  </div>
+		  <div class="media-body" style="float:right;width:88%;">
+		    <h4 class="media-heading"><%= att.record_file_name %></h4>
+		  </div>
+		</div>
 
 	<% end %>
+</div>
 	<br>
 
 	<%= form_for([CodeSolutionAttachment.new], remote: true) do |f| %>
 	<div class="form-group">
-	  <%= f.label :record %>
 	  <%= f.file_field :record, class: 'form-control' %>
 	  <%= f.hidden_field :code_solution_id, value: @code_solution.id %> 
 	  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 	</div>
-	<%= f.submit 'Upload', class: 'btn btn-primary'%>
+	<%= f.submit 'Upload', class: 'btn btn-default'%>
 
 <% end %>

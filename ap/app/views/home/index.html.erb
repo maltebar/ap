@@ -6,7 +6,7 @@
   
   <thead> <%#table header%>
     <tr>
-      <th>Things You Should Know</th>
+      <th>Announcements and Notifications</th>
     </tr>
   </thead>
   
@@ -16,6 +16,7 @@
         <% if current_user.admin? %>
           <div id="notification_form">
             <%=render 'notifications/notification_form'%>
+            <br>
           </div>
         <% end %>
         <div id="notifications_box">

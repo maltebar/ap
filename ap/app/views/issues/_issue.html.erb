@@ -1,15 +1,16 @@
 
 
 <%@issues = Issue.where(project_id: @project.id).order("complete asc, created_at desc")%>
+
 <% @issues.each do |iss|%>
-	<%= div_for iss do%>
+	<%= div_for iss, style: "border: thin dotted gray; padding: 10px" do%>
 		<%if !iss.complete?%>
 			<%=form_for(iss) do |f|%>
 				<%=f.hidden_field :complete, value: true%>
-				<%=f.submit "Mark Complete"%>
+				<%=f.submit "Mark Complete", class: 'btn btn-default', style:'float:right'%>
 			<%end%>
 		<%else%>
-			Completed
+			<div style='float:right'>Completed</div>
 		<%end%>
 		<p><%= iss.content %></p>
 		<p>Posted <%= time_ago_in_words(iss.created_at) %> ago by <%=iss.user.nickname%></p>

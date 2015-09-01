@@ -1,8 +1,5 @@
 <h1><%=@design_case.title%></h1>
 <br>
-<h5><b>Your Assignment</b></h5>
-What are the tradeoffs for each of the proposed solutions? Make a pro/con list for each of the solutions. Rank the three solutions presented from best to worst. Then, come up with another solution for this problem. Make a list of the pros and cons related to your solution and rank your own solution (It doesn’t have to be the best solution).<br><br>
-
 
 <%=form_for(@design_solution) do |f|%>
 	<%=f.hidden_field :design_case_id, value: @design_case.id%>
@@ -15,6 +12,9 @@ What are the tradeoffs for each of the proposed solutions? Make a pro/con list f
 
 	<h5><b>Problems to Be Addressed in the Solution</b></h5>
 	<%=@design_case.questions%><br><br>
+
+	<h5><b>Your Assignment</b></h5>
+	<p>What are the tradeoffs for each of the proposed solutions? Make a pro/con list for each of the solutions. Rank the three solutions presented from best to worst. Then, come up with another solution for this problem. Make a list of the pros and cons related to your solution and rank your own solution (It doesn’t have to be the best solution).</p>
 
 	<h5><b>Solution 1</b></h5>
 	<%=@design_case.solution_1%><br>
@@ -72,7 +72,7 @@ What are the tradeoffs for each of the proposed solutions? Make a pro/con list f
 	<%=f.select :solution_3_rank_1, [1,2,3], {}, {disabled: true}%>
 
 	<h5><b>Your Solution</b></h5>
-	<%=f.text_area :my_solution, disabled: true%>
+	<%=f.text_area :my_solution, disabled: true, style:'resize:none; width: 88%; height: 250px;'%>
 	
 	<h5><b>Rankings of Solutions 1-3 Plus My Solution</b></h5>
 	<%=f.label :solution_1_rank_2, "Solution 1 Rank"%>
@@ -88,7 +88,7 @@ What are the tradeoffs for each of the proposed solutions? Make a pro/con list f
 	<%=f.select :my_solution_rank, [1,2,3,4], {}, {disabled: true}%>
 
 	<h5><b>Justify Your Final Rankings</b></h5>
-	<%=f.text_area :justification, disabled: true%>
+	<%=f.text_area :justification, disabled: true, style:'resize:none; width: 88%; height: 250px;'%>
 
 	<br>
 

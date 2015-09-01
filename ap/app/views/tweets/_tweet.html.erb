@@ -2,7 +2,7 @@
 
 <%@tweets = Tweet.all.order('created_at DESC')%>
 <% @tweets.each do |tweet|%>
-	<%= div_for tweet do%>
+	<%= div_for tweet, style: "border: thin dotted gray; padding: 10px" do%>
 		<p><%= tweet.message %></p>
 		<p>Posted <%= time_ago_in_words(tweet.created_at) %> ago by <%=tweet.user.nickname%></p>
 	<%end%>

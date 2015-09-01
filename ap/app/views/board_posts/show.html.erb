@@ -10,7 +10,7 @@
 						<%=form_for(BoardPostUpvote.new) do |x|%>
 							<%=x.hidden_field :user_id, value: current_user.id%>
 							<%=x.hidden_field :board_post_id, value: @board_post.id%>
-							<%=x.submit "Like"%>
+							<%=x.submit "Like", class: 'btn btn-like'%>
 						<%end%>
 					<%end%>
 				</div></td>
@@ -29,7 +29,7 @@
 						<%=form_for([CommentUpvote.new], remote: true) do |g|%>
 							<%=g.hidden_field :user_id, value: current_user.id%>
 							<%=g.hidden_field :comment_id, value: c.id%>
-							<%=g.submit "Like"%>
+							<%=g.submit "Like", class: 'btn btn-like'%>
 						<%end%>
 					<%end%>
 				</div>
@@ -44,7 +44,7 @@
 	<%=f.cktext_area :content, :ckeditor => {:language => 'en'}%><br>
 	<%=f.hidden_field :user_id, value: current_user.id%>
 	<%=f.hidden_field :board_post_id, value: @board_post.id%>
-	<%=f.submit%>
+	<%=f.submit "Save Comment", class: 'btn btn-default'%>
 <%end%>
 <%= link_to 'Back', board_posts_path %>
 

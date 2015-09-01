@@ -3,52 +3,82 @@
 <% url = "https://github.com/maltebar/ap/commits/master.atom" 
 feed = Feedjira::Feed.fetch_and_parse url %>
 <h3>GitHub Feed</h3>
-<div><div style="float: left; width: 45%; height: 500px; overflow: scroll">
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Commit Message</th>
-				<th>By</th>
-				<th>Link</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% feed.entries.each do |entry|%>
-			<tr>
-				<td><%= entry.title %></td>
-				<td><%= entry.author %>  <%= time_ago_in_words (entry.published) %> ago</td>
-				<td><a href= <%=entry.url%> target="blank" >Go to this commit</a></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
+<div style="display:inline-block; width:100%;">
+  <div style="float: left; width: 48%; height: 500px; overflow: scroll;">
+  	<table class="table table-bordered">
+  		<thead>
+  			<tr>
+  				<th>Commit Message</th>
+  				<th>By</th>
+  				<th>Link</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<% feed.entries.each do |entry|%>
+  			<tr>
+  				<td><%= entry.title %></td>
+  				<td><%= entry.author %>  <%= time_ago_in_words (entry.published) %> ago</td>
+  				<td><a href= <%=entry.url%> target="blank" >Go to this commit</a></td>
+  			</tr>
+  			<% end %>
+  		</tbody>
+  	</table>
+  </div>
+
+  <div style="float: right; width: 48%; height: 500px; overflow: scroll">
+    <table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
+      
+      <thead> <%#table header%>
+        <tr>
+          <th>Issues List</th> 
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+              <div id="issue_form">
+                <%=render 'issues/message_form'%>
+              </div>
+              <div id="issues_box">
+                <%= render 'issues/issue'%>
+              </div>
+              
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
 </div>
+<br><br>
 
-<div><div style="float: right; width: 45%; height: 500px; overflow: scroll">
-<table class="table table-bordered"> <%#table style (with borders around all cells); bordered, striped, hover all possible%>
-  
-  <thead> <%#table header%>
-    <tr>
-      <th>Issues List</th> 
-    </tr>
-  </thead>
+<h4>Uploaded Files</h4>
+<div style='display:inline-block;width:100%;height:250px;overflow:scroll'>
+  <% @project.attachments.each do |att| %>
+  <div class="media" style="width:48%;border:thin dotted gray">
+    <div class="media-bottom" style="float:left;width:10%;">
+      <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
+    </div>
+    <div class="media-body" style="float:right;width:88%;">
+      <h4 class="media-heading"><%= att.record_file_name %></h4>
+    </div>
+  </div>
 
-  <tbody>
-    <tr>
-      <td>
-          <div id="issue_form">
-            <%=render 'issues/message_form'%>
-          </div>
-          <div id="issues_box">
-            <%= render 'issues/issue' %>
-          </div>
-          
-      </td>
-    </tr>
-  </tbody>
-
-</table>
+  <% end %>
 </div>
+<br>
+
+<%= form_for([Attachment.new], remote: true, html: {style: 'vertical-align:bottom'}) do |f| %>
+<div class="form-group">
+  <%= f.file_field :record, class: 'form-control' %>
+  <%= f.hidden_field :project_id, value: @project.id %> 
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-default'%>
+
+<% end %>
+
 <script>
 function executeQuery() {
   $.ajax({
@@ -63,29 +93,4 @@ $(document).ready(function() {
   setTimeout(executeQuery, 60000);
 });
 </script>
-
-<% @project.attachments.each do |att| %>
-
-<div class="media">
-  <div class="media-left">
-    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading"><%= att.record_file_name %></h4>
-  </div>
-</div>
-
-<% end %>
-<br>
-
-<%= form_for([Attachment.new], remote: true) do |f| %>
-<div class="form-group">
-  <%= f.label :record %>
-  <%= f.file_field :record, class: 'form-control' %>
-  <%= f.hidden_field :project_id, value: @project.id %> 
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</div>
-<%= f.submit 'Upload', class: 'btn btn-primary'%>
-
-<% end %>
 

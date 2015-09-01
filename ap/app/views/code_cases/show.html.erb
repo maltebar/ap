@@ -1,21 +1,22 @@
 <h1><%=@code_case.title%> Solution</h1>
 <p><%=@code_case.description%></p>
 
-<p>Files for Code Case</p>
-<br>
+<h4>Files for Code Case</h4>
+<div style='display:inline-block;width:100%;max-height:250px;overflow:scroll'>
 
-<% @code_case.code_case_attachments.each do |att| %>
+	<% @code_case.code_case_attachments.each do |att| %>
 
-<div class="media">
-  <div class="media-left">
-    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading"><%= att.record_file_name %></h4>
-  </div>
+	<div class="media" style="width:48%;border:thin dotted gray">
+	  <div class="media-left" style="float:left;width:10%;">
+	    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
+	  </div>
+	  <div class="media-body" style="float:right;width:88%;">
+	    <h4 class="media-heading"><%= att.record_file_name %></h4>
+	  </div>
+	</div>
+
+	<% end %>
 </div>
-
-<% end %>
 <br>
 <br>
 
@@ -29,7 +30,7 @@
 <%=form_for(@code_solution) do |f|%>
 	<%=f.hidden_field :code_case_id, value: @code_case.id%>
 	<%=f.hidden_field :user_id, value: current_user.id%>
-	<%=f.label :content%>
-	<%=f.text_area :content%>
-	<%=f.submit 'Save Text and Continue to Attach Files'%>
+	<%=f.label :content%><br>
+	<%=f.text_area :content, style:'resize:none; width: 88%; height: 250px;'%><br>
+	<%=f.submit 'Save Text and Continue to Attach Files', class: 'btn btn-default'%>
 <%end%>

@@ -5,4 +5,19 @@
 <br>
 <h3>Technical Description</h3>
 <div><%= @project.technical_description%></div>
+
+<h3>Related Files</h3>
+<div style='display:inline-block;width:100%;max-height:250px;overflow:scroll'>
+  <% @project.attachments.each do |att| %>
+  <div class="media" style="width:48%;border:thin dotted gray">
+    <div class="media-bottom" style="float:left;width:10%;">
+      <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
+    </div>
+    <div class="media-body" style="float:right;width:88%;">
+      <h4 class="media-heading"><%= att.record_file_name %></h4>
+    </div>
+  </div>
+
+  <% end %>
+</div>
 <%= link_to 'Back', archive_index_path %>

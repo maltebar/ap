@@ -7,7 +7,7 @@
   <%= g.date_select :date_assigned%><br>
   <%= g.label :listed %>
   <%= g.check_box :listed%><br>
-  <%= g.submit "Create Assignment"%>
+  <%= g.submit "Create Assignment", class: 'btn btn-default'%>
 <%end%>
 <br>
 
@@ -32,6 +32,6 @@
   <%= f.hidden_field :code_case_id, value: @code_case.id %> 
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 </div>
-<%= f.submit 'Upload', class: 'btn btn-primary'%>
+<%= f.submit 'Upload', class: 'btn btn-default'%>
 
 <% end %>
