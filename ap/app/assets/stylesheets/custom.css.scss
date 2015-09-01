@@ -10,17 +10,6 @@ body {
 	color: #226637;
 }
 
-.btn-default{
-	padding: 2px 12px;
-	font-size: 14px;
-	background-color: #3A768D;
-	color: #FFEDD9;
-	border: transparent !important;
-	&:hover {
-    	background-color: #3A768D !important;
-  	} 
-}
-
 a{
 	color:#226637 !important;
 }
@@ -31,10 +20,32 @@ a[href]:hover {
 	color: #3EA069 !important;
 }
 
+.btn-default{
+	padding: 2px 12px;
+	font-size: 14px;
+	background-color: #3A768D;
+	color: #FFEDD9 !important;
+	border: transparent !important;
+	&:hover {
+    	background-color: #3A768D !important;
+  	} 
+}
+
+.btn-default a{
+	color: #FFEDD9 !important;
+	&:hover {
+    	color: #FFEDD9 !important;
+  	} 
+}
+
 .btn-like{
 	padding: 2px 12px;
 	font-size: 14px;
 	background-color: #3A768D;
+}
+
+.btn-like a{
+	color: #FFEDD9 !important;
 }
 
 .navbar-inverse { //changes colour of (originally black) header
