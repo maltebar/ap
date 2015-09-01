@@ -1,0 +1,68 @@
+html {
+  font-family: Sans-Serif;
+}
+
+body {
+  background: #486D63 !important;
+}
+
+.btn-default{
+	padding: 2px 12px;
+	font-size: 14px;
+	background-color: #8B909F;
+	color: #ECDDCA;
+	border: transparent !important;
+	&:hover {
+    	background-color: #8B909F !important;
+  	} 
+}
+
+a{
+	color:#ECDDCA !important;
+}
+
+a[href]:hover {
+	text-decoration: none !important;
+	background-color: transparent;
+	color: #A68D6E !important;
+}
+
+.btn-like{
+	padding: 2px 12px;
+	font-size: 14px;
+	background-color: #8B909F;
+}
+
+.navbar-inverse { //changes colour of (originally black) header
+    background-color: #363E57 !important;
+}
+
+.navbar-brand {
+  font-size: 160%;
+  color:#ECDDCA !important;
+}
+
+.toplink {
+	color: #ECDDCA !important;
+	&:hover {
+    	background-color: transparent !important;
+    	text-decoration: none;
+    	color: #ECDDCA !important;
+  	} 
+}
+
+.topbar-link {
+	color: #ECDDCA !important;
+	&:hover {
+    	background-color: transparent !important;
+    	text-decoration: none;
+    	color: #ECDDCA !important;
+  	} 
+}
+
+input, textarea{
+	background-color: #8B909F;
+}
+* {
+	color: #ECDDCA;
+}
