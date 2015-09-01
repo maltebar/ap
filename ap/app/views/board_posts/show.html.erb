@@ -5,7 +5,7 @@
 		<td width="80%"><%=@board_post.content.html_safe%>
 				<div id="likes" align="right">
 					<%if BoardPostUpvote.where(board_post_id: @board_post.id, user_id: current_user.id).exists?%>
-						<div> You have already liked this post.</div>
+						<div> You have liked this post.</div>
 					<%else%>
 						<%=form_for(BoardPostUpvote.new) do |x|%>
 							<%=x.hidden_field :user_id, value: current_user.id%>
@@ -24,7 +24,7 @@
 			<td width="80%"><%=c.content.html_safe%>
 				<div id="likes" align="right">
 					<%if CommentUpvote.where(comment_id: c.id, user_id: current_user.id).exists?%>
-						<div> You have already liked this comment.</div>
+						<div> You have liked this comment.</div>
 					<%else%>
 						<%=form_for([CommentUpvote.new], remote: true) do |g|%>
 							<%=g.hidden_field :user_id, value: current_user.id%>

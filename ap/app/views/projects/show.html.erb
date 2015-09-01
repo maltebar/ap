@@ -1,4 +1,4 @@
-<h1>My Partner Page</h1>
+<h1><%=@project.title%> Page</h1>
 
 <% url = "https://github.com/maltebar/ap/commits/master.atom" 
 feed = Feedjira::Feed.fetch_and_parse url %>
@@ -54,7 +54,7 @@ feed = Feedjira::Feed.fetch_and_parse url %>
 <br><br>
 
 <h4>Uploaded Files</h4>
-<div style='display:inline-block;width:100%;height:250px;overflow:scroll'>
+<div style='display:inline-block;width:100%;max-height:250px;overflow:scroll'>
   <% @project.attachments.each do |att| %>
   <div class="media" style="width:48%;border:thin dotted gray">
     <div class="media-bottom" style="float:left;width:10%;">
