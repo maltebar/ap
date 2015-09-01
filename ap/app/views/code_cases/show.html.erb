@@ -1,4 +1,23 @@
-<h1>Code Case Solution</h1>
+<h1><%=@code_case.title%> Solution</h1>
+<p><%=@code_case.description%></p>
+
+<p>Files for Code Case</p>
+<br>
+
+<% @code_case.code_case_attachments.each do |att| %>
+
+<div class="media">
+  <div class="media-left">
+    <%= link_to image_tag(att.record.url(:thumb), class: 'media-object'), att.record.url, target: '_blank' %>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= att.record_file_name %></h4>
+  </div>
+</div>
+
+<% end %>
+<br>
+<br>
 
 <%@code_solution = CodeSolution.where(user_id: current_user.id, code_case_id: @code_case.id)%>
 <%if @code_solution.exists?%>
