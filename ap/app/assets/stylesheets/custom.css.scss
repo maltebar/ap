@@ -3,66 +3,65 @@ html {
 }
 
 body {
-  background: #486D63 !important;
+  background: #FFEDD9 !important;
+}
+
+* {
+	color: #226637;
 }
 
 .btn-default{
 	padding: 2px 12px;
 	font-size: 14px;
-	background-color: #8B909F;
-	color: #ECDDCA;
+	background-color: #3A768D;
+	color: #FFEDD9;
 	border: transparent !important;
 	&:hover {
-    	background-color: #8B909F !important;
+    	background-color: #3A768D !important;
   	} 
 }
 
 a{
-	color:#ECDDCA !important;
+	color:#226637 !important;
 }
 
 a[href]:hover {
 	text-decoration: none !important;
 	background-color: transparent;
-	color: #A68D6E !important;
+	color: #3EA069 !important;
 }
 
 .btn-like{
 	padding: 2px 12px;
 	font-size: 14px;
-	background-color: #8B909F;
+	background-color: #3A768D;
 }
 
 .navbar-inverse { //changes colour of (originally black) header
-    background-color: #363E57 !important;
+    background-color: #204A59 !important;
 }
 
-.navbar-brand {
+a.navbar-brand {
   font-size: 160%;
-  color:#ECDDCA !important;
+  color: #FFEDD9 !important;
 }
 
 .toplink {
-	color: #ECDDCA !important;
+	color: #FFEDD9 !important;
 	&:hover {
     	background-color: transparent !important;
     	text-decoration: none;
-    	color: #ECDDCA !important;
+    	color: #FFEDD9 !important;
   	} 
 }
 
 .topbar-link {
-	color: #ECDDCA !important;
+	color: #FFEDD9 !important;
 	&:hover {
     	background-color: transparent !important;
     	text-decoration: none;
-    	color: #ECDDCA !important;
+    	color: #FFEDD9 !important;
   	} 
 }
 
-input, textarea{
-	background-color: #8B909F;
-}
-* {
-	color: #ECDDCA;
-}
+
