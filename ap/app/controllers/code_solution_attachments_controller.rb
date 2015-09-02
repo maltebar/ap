@@ -31,7 +31,7 @@ class CodeSolutionAttachmentsController < ApplicationController
         format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment was successfully created.' }
         format.json { render :show, status: :created, location: @code_solution_attachment }
       else
-        format.html { render :new }
+        format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment MUST be a text file.' }
         format.json { render json: @code_solution_attachment.errors, status: :unprocessable_entity }
       end
     end
@@ -45,7 +45,7 @@ class CodeSolutionAttachmentsController < ApplicationController
         format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment was successfully updated.' }
         format.json { render :show, status: :ok, location: @code_solution_attachment }
       else
-        format.html { render :edit }
+        format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution) }
         format.json { render json: @code_solution_attachment.errors, status: :unprocessable_entity }
       end
     end
