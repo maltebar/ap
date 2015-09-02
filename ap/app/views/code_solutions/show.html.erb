@@ -14,6 +14,7 @@
 		  </div>
 		  <div class="media-body" style="float:right;width:88%;">
 		    <h4 class="media-heading"><%= att.record_file_name %></h4>
+		    <%= link_to 'Remove', code_solution_attachment_path(att), method: :delete, data: {confirm: 'Are you sure?'} %></div>
 		  </div>
 		</div>
 

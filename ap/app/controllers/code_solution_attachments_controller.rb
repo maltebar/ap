@@ -31,7 +31,7 @@ class CodeSolutionAttachmentsController < ApplicationController
         format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment was successfully created.' }
         format.json { render :show, status: :created, location: @code_solution_attachment }
       else
-        format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment MUST be a text file.' }
+        format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Not an allowable file type. Allowed file extensions are txt, pdf, jpeg, gif, doc, and docx.' }
         format.json { render json: @code_solution_attachment.errors, status: :unprocessable_entity }
       end
     end
@@ -56,8 +56,8 @@ class CodeSolutionAttachmentsController < ApplicationController
   def destroy
     @code_solution_attachment.destroy
     respond_to do |format|
-      format.html { redirect_to code_solution_attachments_url, notice: 'Code solution attachment was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to code_solution_path(@code_solution_attachment.code_solution), notice: 'Code solution attachment was successfully deleted.' }
+        format.json { render :show, status: :ok, location: @code_solution_attachment }
     end
   end
 
