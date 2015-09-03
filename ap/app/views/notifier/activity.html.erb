@@ -1,0 +1,11 @@
+<p>Hi <%= @account.name%></p>
+
+<p>Check out what's going on on the apprenticeship platform!</p>
+
+<% @notifications.each do |notification|%>
+	<% if notification.created_by_admin? && notification.created_at > (Time.zone.now - 1.day)%>
+		<p><%=notification.message%></p>
+	<% elsif !notification.created_by_admin? && !notification.read?%>
+		<p><%=notification.message%></p>
+	<%end%>
+<%end%>
