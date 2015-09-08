@@ -28,7 +28,7 @@ class CommentUpvotesController < ApplicationController
 
     respond_to do |format|
       if @comment_upvote.save
-        format.html { redirect_to @comment_upvote, notice: 'Comment upvote was successfully created.' }
+        format.html { redirect_to :back, notice: 'Comment upvote was successfully created.' }
         format.json { render :show, status: :created, location: @comment_upvote }
       else
         format.html { render :new }
