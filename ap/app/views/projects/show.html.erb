@@ -1,6 +1,6 @@
 <h1><%=@project.title%> Page</h1>
 
-<% url = "https://github.com/maltebar/ap/commits/master.atom" 
+<% url = @project.git_link + "/commits/master.atom"
 feed = Feedjira::Feed.fetch_and_parse url %>
 <h3>GitHub Feed</h3>
 <div style="display:inline-block; width:100%;">
