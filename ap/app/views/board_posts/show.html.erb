@@ -26,7 +26,7 @@
 					<%if CommentUpvote.where(comment_id: c.id, user_id: current_user.id).exists?%>
 						<div> You have liked this comment.</div>
 					<%else%>
-						<%=form_for([CommentUpvote.new], remote: true) do |g|%>
+						<%=form_for(CommentUpvote.new) do |g|%>
 							<%=g.hidden_field :user_id, value: current_user.id%>
 							<%=g.hidden_field :comment_id, value: c.id%>
 							<%=g.submit "Like", class: 'btn btn-like'%>
@@ -54,7 +54,5 @@
 	<%=f.submit "Save Comment", class: 'btn btn-default'%>
 <%end%>
 <%= link_to 'Back', board_posts_path %>
-
-
 
 
