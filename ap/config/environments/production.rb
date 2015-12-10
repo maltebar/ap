@@ -22,7 +22,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.serve_static_files = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -83,7 +83,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'apprentice.cs-i.brandeis.edu',
     user_name:            'brandeisapprenticeship',
-    password:             '',
+    password:             'alterman3',
     authentication:       'plain',
     enable_starttls_auto: true  }
 end

@@ -39,6 +39,13 @@
 	<%end%>
 </table>
 
+<script>
+	$("#new_comment_upvote").bind("ajax:complete", function(event, xhr, status) {
+		window.location.reload();
+	});
+
+</script>
+
 <%=form_for(Comment.new) do |f|%>
 	<%=f.label :content, 'Add a Comment'%><br>
 	<%=f.cktext_area :content, :ckeditor => {:language => 'en'}%><br>
@@ -49,10 +56,5 @@
 <%= link_to 'Back', board_posts_path %>
 
 
-<script>
-	$("#new_comment_upvote").bind("ajax:complete", function(event, xhr, status) {
-		window.location.reload();
-	});
 
-</script>
 

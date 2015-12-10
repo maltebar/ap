@@ -3,9 +3,9 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
-every 1.day, :at => '6:00 am' do
-  runner "Notification.send_mail"
-end
+#every 1.day, :at => '6:00 pm' do
+#  runner "Notification.send_mail"
+#end
 
 # Example:
 #
