@@ -11,6 +11,7 @@ class BoardPostsController < ApplicationController
   # GET /board_posts/1
   # GET /board_posts/1.json
   def show
+    ahoy.track "Visited Board Post" , board_post_id: @board_post.id
   end
 
   # GET /board_posts/new
